@@ -22,6 +22,18 @@ struct SearchParameters {
       secondDate = Date()
    }
    
+   func isFiltering() -> Bool {
+      if text == nil &&
+            account == nil &&
+            budget == nil &&
+            debitToggle == nil &&
+            dateToggle == false &&
+            dateRangeToggle == false {
+         return false
+      }
+      return true
+   }
+   
    mutating func reset() {
       text = nil
       account = nil

@@ -26,9 +26,15 @@ struct TransactionView: View {
                SearchBarView(text: $searchInput.text.bound)
                   .padding(.leading, 10)
                Button(action: { showingFilterPopover = true }, label: {
-                  Image(systemName: "line.horizontal.3.decrease.circle")
-                     .resizable()
-                     .frame(width: 22, height: 22)
+                  if !searchInput.isFiltering() {
+                     Image(systemName: "line.horizontal.3.decrease.circle")
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                  } else {
+                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                  }
                })
                .padding(.trailing, 25)
                .popover(isPresented: $showingFilterPopover, content: {
