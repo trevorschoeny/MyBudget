@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TDetailView: View {
-   @Environment(\.managedObjectContext) private var viewContext
-   
    @FetchRequest(
       entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.date, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>
@@ -104,7 +102,7 @@ struct TDetailView: View {
       .navigationBarItems(trailing: editButton)
       .navigationTitle("Transaction")
       .popover(isPresented: self.$showingPopover, content: {
-         TEdit(oldTransaction: $oldTransaction, newTransaction: $newTransaction, inputTransaction: $transaction)
+         TEditView(oldTransaction: $oldTransaction, newTransaction: $newTransaction, inputTransaction: $transaction)
       })
    }
    private var editButton: some View {

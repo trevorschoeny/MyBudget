@@ -14,9 +14,11 @@
 		B1278560266D642500A06ADE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127855F266D642500A06ADE /* SearchBarView.swift */; };
 		B1278562266D66FD00A06ADE /* OptionalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278561266D66FD00A06ADE /* OptionalExtension.swift */; };
 		B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278563266D68BA00A06ADE /* TFilterView.swift */; };
-		B1278566266D6BD200A06ADE /* TNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278565266D6BD200A06ADE /* TNew.swift */; };
+		B1278566266D6BD200A06ADE /* TNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278565266D6BD200A06ADE /* TNewView.swift */; };
 		B127856E266D855900A06ADE /* TDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856D266D855900A06ADE /* TDetailView.swift */; };
-		B1278570266D88A900A06ADE /* TEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856F266D88A900A06ADE /* TEdit.swift */; };
+		B1278570266D88A900A06ADE /* TEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856F266D88A900A06ADE /* TEditView.swift */; };
+		B1452A0E266E847500918E5F /* AListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1452A0D266E847500918E5F /* AListItemView.swift */; };
+		B1452A10266E857000918E5F /* AListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1452A0F266E857000918E5F /* AListView.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
 		B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC41266D46C7003AF57D /* MyTabView.swift */; };
 		B167CC44266D46C9003AF57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC43266D46C9003AF57D /* Assets.xcassets */; };
@@ -45,9 +47,11 @@
 		B127855F266D642500A06ADE /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B1278561266D66FD00A06ADE /* OptionalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExtension.swift; sourceTree = "<group>"; };
 		B1278563266D68BA00A06ADE /* TFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFilterView.swift; sourceTree = "<group>"; };
-		B1278565266D6BD200A06ADE /* TNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNew.swift; sourceTree = "<group>"; };
+		B1278565266D6BD200A06ADE /* TNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNewView.swift; sourceTree = "<group>"; };
 		B127856D266D855900A06ADE /* TDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDetailView.swift; sourceTree = "<group>"; };
-		B127856F266D88A900A06ADE /* TEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEdit.swift; sourceTree = "<group>"; };
+		B127856F266D88A900A06ADE /* TEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEditView.swift; sourceTree = "<group>"; };
+		B1452A0D266E847500918E5F /* AListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AListItemView.swift; sourceTree = "<group>"; };
+		B1452A0F266E857000918E5F /* AListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AListView.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBudgetApp.swift; sourceTree = "<group>"; };
 		B167CC41266D46C7003AF57D /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
@@ -88,9 +92,9 @@
 				B1278557266D5C8700A06ADE /* TListView.swift */,
 				B1278555266D5B5C00A06ADE /* TListItemView.swift */,
 				B1278563266D68BA00A06ADE /* TFilterView.swift */,
-				B1278565266D6BD200A06ADE /* TNew.swift */,
+				B1278565266D6BD200A06ADE /* TNewView.swift */,
 				B127856D266D855900A06ADE /* TDetailView.swift */,
-				B127856F266D88A900A06ADE /* TEdit.swift */,
+				B127856F266D88A900A06ADE /* TEditView.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				B193AC84266D592600AEA50D /* AccountView.swift */,
+				B1452A0D266E847500918E5F /* AListItemView.swift */,
+				B1452A0F266E857000918E5F /* AListView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -258,12 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1452A0E266E847500918E5F /* AListItemView.swift in Sources */,
 				B193AC85266D592600AEA50D /* AccountView.swift in Sources */,
 				B127855E266D5E3900A06ADE /* DateExtension.swift in Sources */,
-				B1278570266D88A900A06ADE /* TEdit.swift in Sources */,
+				B1278570266D88A900A06ADE /* TEditView.swift in Sources */,
 				B127856E266D855900A06ADE /* TDetailView.swift in Sources */,
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
-				B1278566266D6BD200A06ADE /* TNew.swift in Sources */,
+				B1278566266D6BD200A06ADE /* TNewView.swift in Sources */,
 				B1880298266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift in Sources */,
 				B188029A266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift in Sources */,
 				B1880296266DCEF300C64908 /* AccountEntity+CoreDataClass.swift in Sources */,
@@ -275,6 +282,7 @@
 				B188029F266DE23B00C64908 /* FormatterExtension.swift in Sources */,
 				B188029D266DD37200C64908 /* TempTransaction.swift in Sources */,
 				B1278562266D66FD00A06ADE /* OptionalExtension.swift in Sources */,
+				B1452A10266E857000918E5F /* AListView.swift in Sources */,
 				B1278558266D5C8700A06ADE /* TListView.swift in Sources */,
 				B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */,
 				B1278560266D642500A06ADE /* SearchBarView.swift in Sources */,

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TFilterView: View {
-   @Environment(\.managedObjectContext) private var viewContext
-   
    @FetchRequest(
       entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.date, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>

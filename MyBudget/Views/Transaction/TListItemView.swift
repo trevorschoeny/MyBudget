@@ -9,16 +9,7 @@ import SwiftUI
 import CoreData
 
 struct TListItemView: View {
-   @Environment(\.managedObjectContext) private var viewContext
    @ObservedObject var t: TransactionEntity
-   
-   @State private var score = -15.837
-   
-   let formatter: NumberFormatter = {
-       let formatter = NumberFormatter()
-       formatter.numberStyle = .currency
-       return formatter
-   }()
    
     var body: some View {
       NavigationLink(

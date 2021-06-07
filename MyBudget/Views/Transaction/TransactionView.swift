@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct TransactionView: View {
-   @Environment(\.managedObjectContext) private var viewContext
-   
-   @FetchRequest(
-      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.date, ascending: false)], animation: .default)
-   private var transactions: FetchedResults<TransactionEntity>
    
    @State var searchInput = SearchParameters()
    @State var showingNewTPopover = false
@@ -48,7 +43,7 @@ struct TransactionView: View {
          .navigationBarItems(trailing: addButton)
       }
       .popover(isPresented: $showingNewTPopover, content: {
-         TNew()
+         TNewView()
       })
    }
    private var addButton: some View {
