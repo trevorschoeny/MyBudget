@@ -20,8 +20,8 @@ struct TDetailView: View {
    
    @State var transaction: TransactionEntity
    @State var showingPopover = false
-   @State var oldTransaction = TempT()
-   @State var newTransaction = TempT()
+   @State var oldTransaction = TempTransaction()
+   @State var newTransaction = TempTransaction()
    
    var body: some View {
       VStack(alignment: .leading, spacing: 0.0) {
@@ -41,13 +41,13 @@ struct TDetailView: View {
                VStack {
                   // MARK: Amount
                   if transaction.isDebit {
-                     Text("$" + String(transaction.amount))
+                     Text(formatterFunction(number: transaction.amount))
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                         .foregroundColor(Color.green)
                   }
                   else {
-                     Text("($" + String(transaction.amount) + ")")
+                     Text(formatterFunction(number: transaction.amount))
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                         .foregroundColor(Color.red)
@@ -55,12 +55,12 @@ struct TDetailView: View {
                   
                   // MARK: Account
                   if transaction.isDebit {
-                     Text("to " + (transaction.account ?? "No Account"))
+                     Text("to " + (transaction.account?.name ?? "No Account"))
                         .font(.title2)
                         .fontWeight(.light)
                   }
                   else {
-                     Text("from " + (transaction.account ?? "No Account"))
+                     Text("from " + (transaction.account?.name ?? "No Account"))
                         .font(.title2)
                         .fontWeight(.light)
                   }
@@ -83,7 +83,7 @@ struct TDetailView: View {
                   Text("Budget: ")
                      .foregroundColor(Color.gray)
                   Spacer()
-                  Text(transaction.budget ?? "")
+                  Text(transaction.budget?.name ?? "")
                }
             }
             
@@ -104,13 +104,13 @@ struct TDetailView: View {
       .navigationBarItems(trailing: editButton)
       .navigationTitle("Transaction")
       .popover(isPresented: self.$showingPopover, content: {
-         TEdit(oldT: $oldTransaction, newT: $newTransaction, inputTransaction: $transaction)
+         TEdit(oldTransaction: $oldTransaction, newTransaction: $newTransaction, inputTransaction: $transaction)
       })
    }
    private var editButton: some View {
       Button(action: {
-         oldTransaction.prepareTempT(transaction: transaction)
-         newTransaction.prepareTempTNew(transaction: transaction)
+         oldTransaction.prepare(transaction: transaction)
+         newTransaction.prepareNew(transaction: transaction)
          showingPopover = true
       }, label: {
          Text("Edit")

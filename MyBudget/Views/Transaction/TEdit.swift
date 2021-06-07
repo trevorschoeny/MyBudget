@@ -22,8 +22,8 @@ struct TEdit: View {
       entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.name, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
-   @Binding var oldT: TempT
-   @Binding var newT: TempT
+   @Binding var oldTransaction: TempTransaction
+   @Binding var newTransaction: TempTransaction
    @Binding var inputTransaction: TransactionEntity
    @Environment(\.presentationMode) var isPresented
    @State var showAlert = false
@@ -34,34 +34,34 @@ struct TEdit: View {
          VStack {
             Form {
                // MARK: Description
-               TextField(oldT.name.bound, text: $newT.name.bound)
+               TextField(oldTransaction.name, text: $newTransaction.name)
                
                // MARK: Date
-               DatePicker("Date of Transaction: ", selection: $newT.date, displayedComponents: .date)
+               DatePicker("Date of Transaction: ", selection: $newTransaction.date, displayedComponents: .date)
                
                VStack(alignment: .leading) {
                   // MARK: Debit or Credit
                   HStack(spacing: 0) {
-                     if newT.isDebit {
+                     if newTransaction.isDebit {
                         Text("Debit to . . .")
                      }
                      else {
                         Text("Credit from . . .")
                      }
                      // MARK: Account
-                     Picker(selection: $newT.account, label: Text("")) {
+                     Picker(selection: $newTransaction.account, label: Text("")) {
                         ForEach(accounts) { a in
                            Text(a.name ?? "no name").tag(a as AccountEntity?)
                         }
                      }
                      .lineLimit(1)
                      Spacer()
-                     if newT.isDebit {
-                        Toggle("", isOn: $newT.isDebit)
+                     if newTransaction.isDebit {
+                        Toggle("", isOn: $newTransaction.isDebit)
                            .frame(width: 60)
                      }
                      else {
-                        Toggle("", isOn: $newT.isDebit)
+                        Toggle("", isOn: $newTransaction.isDebit)
                            .frame(width: 60)
                      }
                   }
@@ -70,25 +70,25 @@ struct TEdit: View {
                // MARK: Amount
                HStack {
                   Text("Amount: ")
-                  if !newT.isDebit {
+                  if !newTransaction.isDebit {
                      Text("$( ")
-                     TextField(oldT.amount.bound, text: $newT.amount.bound)
+                     TextField(oldTransaction.amount, text: $newTransaction.amount)
                         .keyboardType(.decimalPad)
                      Spacer()
                      Text(" )")
                   }
                   else {
                      Text("$ ")
-                     TextField(oldT.amount.bound, text: $newT.amount.bound)
+                     TextField(oldTransaction.amount, text: $newTransaction.amount)
                         .keyboardType(.decimalPad)
                   }
                }
                
                // MARK: Budget
-               if !newT.isDebit {
+               if !newTransaction.isDebit {
                   HStack {
                      Text("Budget:")
-                     Picker(selection: $newT.budget, label: Text("")) {
+                     Picker(selection: $newTransaction.budget, label: Text("")) {
                         ForEach(budgets) { b in
                            Text(b.name ?? "no name").tag(b as BudgetEntity?)
                         }
@@ -98,11 +98,11 @@ struct TEdit: View {
                }
                
                // MARK: Remove Budget
-               if newT.budget != nil {
+               if newTransaction.budget != nil {
                   HStack {
                      Spacer()
                      Button(action: {
-                        newT.budget = nil
+                        newTransaction.budget = nil
                      }, label: {
                         Text("Clear Budget")
                            .foregroundColor(.blue)
@@ -117,13 +117,13 @@ struct TEdit: View {
                   Text("Notes: ")
                      .padding(.top, 5.0)
                   
-                  TextEditor(text: $newT.notes.bound)
+                  TextEditor(text: $newTransaction.notes)
                }
             }
             
             // MARK: Cancel Button
             Button(action: {
-               newT.reset()
+//               newT.reset()
                self.isPresented.wrappedValue.dismiss()
             }, label: {
                Text("Cancel ")
@@ -135,12 +135,12 @@ struct TEdit: View {
             Button(action: {
 
                // Show Alert
-               if (newT.amount?.filter({ $0 == "."}).count)! > 1 || newT.account == nil {
+               if (newTransaction.amount.filter({ $0 == "."}).count) > 1 || newTransaction.account == nil {
                   showAlert = true
                }
                // Submit Transaction
                else {
-                  newT.populateT(transaction: inputTransaction, oldTransaction: oldT)
+                  newTransaction.editTransaction(transaction: inputTransaction, oldTransaction: oldTransaction)
                   do {
                       try viewContext.save()
                   } catch {
@@ -151,8 +151,8 @@ struct TEdit: View {
                   if !inputTransaction.isDebit {
 //                     updateBudgetBalance()
                   }
-                  oldT = newT
-                  newT.prepareTempTNew(transaction: inputTransaction)
+                  oldTransaction = newTransaction
+                  newTransaction.prepareNew(transaction: inputTransaction)
                }
                self.isPresented.wrappedValue.dismiss()
 

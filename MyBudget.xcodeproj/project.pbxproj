@@ -15,7 +15,6 @@
 		B1278562266D66FD00A06ADE /* OptionalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278561266D66FD00A06ADE /* OptionalExtension.swift */; };
 		B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278563266D68BA00A06ADE /* TFilterView.swift */; };
 		B1278566266D6BD200A06ADE /* TNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278565266D6BD200A06ADE /* TNew.swift */; };
-		B1278568266D6C0300A06ADE /* TempT.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278567266D6C0300A06ADE /* TempT.swift */; };
 		B127856E266D855900A06ADE /* TDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856D266D855900A06ADE /* TDetailView.swift */; };
 		B1278570266D88A900A06ADE /* TEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856F266D88A900A06ADE /* TEdit.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
@@ -24,6 +23,14 @@
 		B167CC47266D46C9003AF57D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC46266D46C9003AF57D /* Preview Assets.xcassets */; };
 		B167CC49266D46C9003AF57D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC48266D46C9003AF57D /* Persistence.swift */; };
 		B167CC4C266D46C9003AF57D /* MyBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B167CC4A266D46C9003AF57D /* MyBudget.xcdatamodeld */; };
+		B1880296266DCEF300C64908 /* AccountEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880290266DCEF300C64908 /* AccountEntity+CoreDataClass.swift */; };
+		B1880297266DCEF300C64908 /* AccountEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880291266DCEF300C64908 /* AccountEntity+CoreDataProperties.swift */; };
+		B1880298266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880292266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift */; };
+		B1880299266DCEF300C64908 /* BudgetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880293266DCEF300C64908 /* BudgetEntity+CoreDataProperties.swift */; };
+		B188029A266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880294266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift */; };
+		B188029B266DCEF300C64908 /* TransactionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1880295266DCEF300C64908 /* TransactionEntity+CoreDataProperties.swift */; };
+		B188029D266DD37200C64908 /* TempTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188029C266DD37200C64908 /* TempTransaction.swift */; };
+		B188029F266DE23B00C64908 /* FormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188029E266DE23B00C64908 /* FormatterExtension.swift */; };
 		B193AC83266D58AC00AEA50D /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC82266D58AC00AEA50D /* TransactionView.swift */; };
 		B193AC85266D592600AEA50D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC84266D592600AEA50D /* AccountView.swift */; };
 		B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC86266D59DC00AEA50D /* BudgetView.swift */; };
@@ -39,8 +46,6 @@
 		B1278561266D66FD00A06ADE /* OptionalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExtension.swift; sourceTree = "<group>"; };
 		B1278563266D68BA00A06ADE /* TFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFilterView.swift; sourceTree = "<group>"; };
 		B1278565266D6BD200A06ADE /* TNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNew.swift; sourceTree = "<group>"; };
-		B1278567266D6C0300A06ADE /* TempT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempT.swift; sourceTree = "<group>"; };
-		B1278569266D6F5900A06ADE /* FindAccountMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountMatch.swift; sourceTree = "<group>"; };
 		B127856D266D855900A06ADE /* TDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDetailView.swift; sourceTree = "<group>"; };
 		B127856F266D88A900A06ADE /* TEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEdit.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +56,14 @@
 		B167CC48266D46C9003AF57D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B167CC4B266D46C9003AF57D /* MyBudget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyBudget.xcdatamodel; sourceTree = "<group>"; };
 		B167CC4D266D46C9003AF57D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1880290266DCEF300C64908 /* AccountEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AccountEntity+CoreDataClass.swift"; path = "MyBudget/AccountEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B1880291266DCEF300C64908 /* AccountEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AccountEntity+CoreDataProperties.swift"; path = "MyBudget/AccountEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B1880292266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BudgetEntity+CoreDataClass.swift"; path = "MyBudget/BudgetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B1880293266DCEF300C64908 /* BudgetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BudgetEntity+CoreDataProperties.swift"; path = "MyBudget/BudgetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B1880294266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataClass.swift"; path = "MyBudget/TransactionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B1880295266DCEF300C64908 /* TransactionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataProperties.swift"; path = "MyBudget/TransactionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B188029C266DD37200C64908 /* TempTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTransaction.swift; sourceTree = "<group>"; };
+		B188029E266DE23B00C64908 /* FormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterExtension.swift; sourceTree = "<group>"; };
 		B193AC82266D58AC00AEA50D /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		B193AC84266D592600AEA50D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		B193AC86266D59DC00AEA50D /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
@@ -75,8 +88,8 @@
 				B1278557266D5C8700A06ADE /* TListView.swift */,
 				B1278555266D5B5C00A06ADE /* TListItemView.swift */,
 				B1278563266D68BA00A06ADE /* TFilterView.swift */,
-				B127856D266D855900A06ADE /* TDetailView.swift */,
 				B1278565266D6BD200A06ADE /* TNew.swift */,
+				B127856D266D855900A06ADE /* TDetailView.swift */,
 				B127856F266D88A900A06ADE /* TEdit.swift */,
 			);
 			path = Transaction;
@@ -101,9 +114,8 @@
 		B1278559266D5D4F00A06ADE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B188029C266DD37200C64908 /* TempTransaction.swift */,
 				B127855A266D5D6200A06ADE /* SearchParameters.swift */,
-				B1278567266D6C0300A06ADE /* TempT.swift */,
-				B1278569266D6F5900A06ADE /* FindAccountMatch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +125,7 @@
 			children = (
 				B127855D266D5E3900A06ADE /* DateExtension.swift */,
 				B1278561266D66FD00A06ADE /* OptionalExtension.swift */,
+				B188029E266DE23B00C64908 /* FormatterExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -120,6 +133,12 @@
 		B167CC33266D46C7003AF57D = {
 			isa = PBXGroup;
 			children = (
+				B1880290266DCEF300C64908 /* AccountEntity+CoreDataClass.swift */,
+				B1880291266DCEF300C64908 /* AccountEntity+CoreDataProperties.swift */,
+				B1880292266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift */,
+				B1880293266DCEF300C64908 /* BudgetEntity+CoreDataProperties.swift */,
+				B1880294266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift */,
+				B1880295266DCEF300C64908 /* TransactionEntity+CoreDataProperties.swift */,
 				B167CC3E266D46C7003AF57D /* MyBudget */,
 				B167CC3D266D46C7003AF57D /* Products */,
 			);
@@ -245,18 +264,25 @@
 				B127856E266D855900A06ADE /* TDetailView.swift in Sources */,
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
 				B1278566266D6BD200A06ADE /* TNew.swift in Sources */,
+				B1880298266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift in Sources */,
+				B188029A266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift in Sources */,
+				B1880296266DCEF300C64908 /* AccountEntity+CoreDataClass.swift in Sources */,
 				B193AC89266D59E700AEA50D /* DashboardView.swift in Sources */,
 				B167CC49266D46C9003AF57D /* Persistence.swift in Sources */,
 				B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */,
 				B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */,
 				B193AC83266D58AC00AEA50D /* TransactionView.swift in Sources */,
+				B188029F266DE23B00C64908 /* FormatterExtension.swift in Sources */,
+				B188029D266DD37200C64908 /* TempTransaction.swift in Sources */,
 				B1278562266D66FD00A06ADE /* OptionalExtension.swift in Sources */,
 				B1278558266D5C8700A06ADE /* TListView.swift in Sources */,
 				B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */,
 				B1278560266D642500A06ADE /* SearchBarView.swift in Sources */,
-				B1278568266D6C0300A06ADE /* TempT.swift in Sources */,
+				B188029B266DCEF300C64908 /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				B167CC4C266D46C9003AF57D /* MyBudget.xcdatamodeld in Sources */,
+				B1880297266DCEF300C64908 /* AccountEntity+CoreDataProperties.swift in Sources */,
 				B1278556266D5B5C00A06ADE /* TListItemView.swift in Sources */,
+				B1880299266DCEF300C64908 /* BudgetEntity+CoreDataProperties.swift in Sources */,
 				B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

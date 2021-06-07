@@ -13,15 +13,15 @@ struct PersistenceController {
    static var preview: PersistenceController = {
       let result = PersistenceController(inMemory: true)
       let viewContext = result.container.viewContext
-      for i in 0..<10 {
-         let newTransaction = TransactionEntity(context: viewContext)
-         newTransaction.name = "Transaction #" + String(i)
-      }
       for i in 0..<5 {
          let newAccount = AccountEntity(context: viewContext)
          newAccount.name = "Account #" + String(i)
          let newBudget = BudgetEntity(context: viewContext)
          newBudget.name = "Account #" + String(i)
+      }
+      for i in 0..<10 {
+         let newTransaction = TransactionEntity(context: viewContext)
+         newTransaction.name = "Transaction #" + String(i)
       }
       do {
          try viewContext.save()

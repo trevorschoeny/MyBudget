@@ -12,6 +12,14 @@ struct TListItemView: View {
    @Environment(\.managedObjectContext) private var viewContext
    @ObservedObject var t: TransactionEntity
    
+   @State private var score = -15.837
+   
+   let formatter: NumberFormatter = {
+       let formatter = NumberFormatter()
+       formatter.numberStyle = .currency
+       return formatter
+   }()
+   
     var body: some View {
       NavigationLink(
          destination: TDetailView(transaction: t),
@@ -27,13 +35,13 @@ struct TListItemView: View {
                Spacer()
                VStack(alignment: .trailing) {
                   if !t.isDebit {
-                     Text("($\(String(t.amount)))")
+                     Text(formatterFunction(number: t.amount))
                         .foregroundColor(Color.red)
                   } else {
-                     Text(String(t.amount))
+                     Text(formatterFunction(number: t.amount))
                         .foregroundColor(Color.green)
                   }
-                  Text(t.account ?? "No Account")
+                  Text(t.account?.name ?? "No Name")
                      .font(.footnote)
                      .lineLimit(1)
                }

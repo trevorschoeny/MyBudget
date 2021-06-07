@@ -24,16 +24,19 @@ struct TransactionView: View {
             TListView(searchInput: $searchInput)
             HStack {
                SearchBarView(text: $searchInput.text.bound)
-                  .padding(.bottom, 10.0)
+                  .padding(.leading, 10)
                Button(action: { showingFilterPopover = true }, label: {
-                  Text("Filter")
+                  Image(systemName: "line.horizontal.3.decrease.circle")
+                     .resizable()
+                     .frame(width: 22, height: 22)
                })
-               .padding(.trailing)
-               .offset(y:-5)
+               .padding(.trailing, 25)
                .popover(isPresented: $showingFilterPopover, content: {
                   TFilterView(searchInput: $searchInput)
                })
             }
+            .padding(.bottom, 10)
+            .padding(.vertical, 5)
          }
          .navigationTitle("Transactions")
          .navigationBarItems(trailing: addButton)

@@ -11,7 +11,7 @@ struct TListView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
-      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.name, ascending: false)], animation: .default)
+      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.date, ascending: false)], animation: .default)
    private var transactions: FetchedResults<TransactionEntity>
    
    @Binding var searchInput: SearchParameters
@@ -42,12 +42,12 @@ struct TListView: View {
    func checkFilter(t: TransactionEntity) -> Bool {
       
       // Account
-      if searchInput.account != nil && t.account != searchInput.account?.name {
+      if searchInput.account != nil && t.account?.name != searchInput.account?.name {
          return false
       }
       // Budget
       if searchInput.debitToggle != "Debit" {
-         if searchInput.budget != nil && t.budget != searchInput.budget?.name {
+         if searchInput.budget != nil && t.budget?.name != searchInput.budget?.name {
             return false
          }
       }
