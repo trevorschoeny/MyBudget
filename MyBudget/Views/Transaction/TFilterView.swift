@@ -11,11 +11,11 @@ struct TFilterView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
-      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.name, ascending: true)], animation: .default)
+      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.date, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>
    
    @FetchRequest(
-      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.name, ascending: true)], animation: .default)
+      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.date, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
    @Binding var searchInput: SearchParameters

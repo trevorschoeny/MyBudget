@@ -1,5 +1,5 @@
 //
-//  TNew.swift
+//  TEdit.swift
 //  MyBudget
 //
 //  Created by Trevor Schoeny on 6/6/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TNew: View {
+struct TEdit: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
@@ -22,16 +22,19 @@ struct TNew: View {
       entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.name, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
-   @State var newT = TempT()
+   @Binding var oldT: TempT
+   @Binding var newT: TempT
+   @Binding var inputTransaction: TransactionEntity
    @Environment(\.presentationMode) var isPresented
    @State var showAlert = false
+   
    
     var body: some View {
       NavigationView {
          VStack {
             Form {
                // MARK: Description
-               TextField("Add description here...", text: $newT.name.bound)
+               TextField(oldT.name.bound, text: $newT.name.bound)
                
                // MARK: Date
                DatePicker("Date of Transaction: ", selection: $newT.date, displayedComponents: .date)
@@ -47,10 +50,8 @@ struct TNew: View {
                      }
                      // MARK: Account
                      Picker(selection: $newT.account, label: Text("")) {
-                        if accounts.count > 0 {
-                           ForEach(accounts) { a in
-                              Text(a.name ?? "no name").tag(a as AccountEntity?)
-                           }
+                        ForEach(accounts) { a in
+                           Text(a.name ?? "no name").tag(a as AccountEntity?)
                         }
                      }
                      .lineLimit(1)
@@ -68,16 +69,17 @@ struct TNew: View {
                
                // MARK: Amount
                HStack {
+                  Text("Amount: ")
                   if !newT.isDebit {
                      Text("$( ")
-                     TextField("Amount", text: $newT.amount.bound)
+                     TextField(oldT.amount.bound, text: $newT.amount.bound)
                         .keyboardType(.decimalPad)
                      Spacer()
                      Text(" )")
                   }
                   else {
                      Text("$ ")
-                     TextField("Amount", text: $newT.amount.bound)
+                     TextField(oldT.amount.bound, text: $newT.amount.bound)
                         .keyboardType(.decimalPad)
                   }
                }
@@ -119,7 +121,7 @@ struct TNew: View {
                }
             }
             
-            // MARK: Clear Button
+            // MARK: Cancel Button
             Button(action: {
                newT.reset()
                self.isPresented.wrappedValue.dismiss()
@@ -129,18 +131,16 @@ struct TNew: View {
             })
             .padding(.top, 5.0)
             
-            
             // MARK: Save Button
             Button(action: {
-               
+
                // Show Alert
-               if newT.name == "" || newT.name == nil || newT.amount == "" || newT.amount?.filter({ $0 == "."}).count ?? 0 > 1 || newT.account == nil {
+               if (newT.amount?.filter({ $0 == "."}).count)! > 1 || newT.account == nil {
                   showAlert = true
                }
                // Submit Transaction
                else {
-                  let newTransaction = TransactionEntity(context: viewContext)
-                  newT.populateT(transaction: newTransaction, oldTransaction: newT)
+                  newT.populateT(transaction: inputTransaction, oldTransaction: oldT)
                   do {
                       try viewContext.save()
                   } catch {
@@ -148,13 +148,14 @@ struct TNew: View {
                       fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                   }
 //                  updateAccountBalance()
-                  if !newT.isDebit {
+                  if !inputTransaction.isDebit {
 //                     updateBudgetBalance()
                   }
-                  newT.reset()
+                  oldT = newT
+                  newT.prepareTempTNew(transaction: inputTransaction)
                }
                self.isPresented.wrappedValue.dismiss()
-               
+
             }, label: {
                ZStack {
                   Rectangle()
@@ -179,13 +180,13 @@ struct TNew: View {
             .cornerRadius(10)
             .padding([.leading, .bottom, .trailing])
          }
-         .navigationTitle("Add Transaction")
+         .navigationTitle("Edit Transaction")
       }
     }
 }
 
-struct TNew_Previews: PreviewProvider {
-    static var previews: some View {
-        TNew()
-    }
-}
+//struct TEdit_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TEdit()
+//    }
+//}

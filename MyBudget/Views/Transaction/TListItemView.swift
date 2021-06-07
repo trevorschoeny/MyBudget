@@ -14,7 +14,7 @@ struct TListItemView: View {
    
     var body: some View {
       NavigationLink(
-         destination: DashboardView(),
+         destination: TDetailView(transaction: t),
          label: {
             HStack {
                VStack(alignment: .leading) {
@@ -43,9 +43,9 @@ struct TListItemView: View {
     }
 }
 
-struct TListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-      TListItemView(t: TransactionEntity())
-         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct TListItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      TListItemView(t: TransactionEntity())
+//         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

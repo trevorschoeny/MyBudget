@@ -16,6 +16,8 @@
 		B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278563266D68BA00A06ADE /* TFilterView.swift */; };
 		B1278566266D6BD200A06ADE /* TNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278565266D6BD200A06ADE /* TNew.swift */; };
 		B1278568266D6C0300A06ADE /* TempT.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278567266D6C0300A06ADE /* TempT.swift */; };
+		B127856E266D855900A06ADE /* TDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856D266D855900A06ADE /* TDetailView.swift */; };
+		B1278570266D88A900A06ADE /* TEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127856F266D88A900A06ADE /* TEdit.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
 		B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC41266D46C7003AF57D /* MyTabView.swift */; };
 		B167CC44266D46C9003AF57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC43266D46C9003AF57D /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		B1278565266D6BD200A06ADE /* TNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNew.swift; sourceTree = "<group>"; };
 		B1278567266D6C0300A06ADE /* TempT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempT.swift; sourceTree = "<group>"; };
 		B1278569266D6F5900A06ADE /* FindAccountMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountMatch.swift; sourceTree = "<group>"; };
+		B127856D266D855900A06ADE /* TDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDetailView.swift; sourceTree = "<group>"; };
+		B127856F266D88A900A06ADE /* TEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEdit.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBudgetApp.swift; sourceTree = "<group>"; };
 		B167CC41266D46C7003AF57D /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
@@ -71,7 +75,9 @@
 				B1278557266D5C8700A06ADE /* TListView.swift */,
 				B1278555266D5B5C00A06ADE /* TListItemView.swift */,
 				B1278563266D68BA00A06ADE /* TFilterView.swift */,
+				B127856D266D855900A06ADE /* TDetailView.swift */,
 				B1278565266D6BD200A06ADE /* TNew.swift */,
+				B127856F266D88A900A06ADE /* TEdit.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -235,6 +241,8 @@
 			files = (
 				B193AC85266D592600AEA50D /* AccountView.swift in Sources */,
 				B127855E266D5E3900A06ADE /* DateExtension.swift in Sources */,
+				B1278570266D88A900A06ADE /* TEdit.swift in Sources */,
+				B127856E266D855900A06ADE /* TDetailView.swift in Sources */,
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
 				B1278566266D6BD200A06ADE /* TNew.swift in Sources */,
 				B193AC89266D59E700AEA50D /* DashboardView.swift in Sources */,

@@ -20,9 +20,6 @@
         <attribute name="onDashboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
     <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="class">
         <attribute name="account" optional="YES" attributeType="String"/>
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -36,6 +33,5 @@
         <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="149"/>
         <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="149"/>
         <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="134"/>
-        <element name="Item" positionX="-18" positionY="81" width="128" height="44"/>
     </elements>
 </model>

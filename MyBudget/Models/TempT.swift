@@ -25,13 +25,39 @@ struct TempT {
       name = nil
       notes = nil
    }
-   func populateT(transaction: TransactionEntity) {
+   func populateT(transaction: TransactionEntity, oldTransaction: TempT) {
       transaction.account = account?.name
-      transaction.amount = Double(amount ?? "") ?? 0.0
+      if amount == "" {
+         transaction.amount = Double(oldTransaction.amount ?? "") ?? 0.0
+      } else {
+         transaction.amount = Double(amount ?? "") ?? 0.0
+      }
       transaction.budget = budget?.name
-      transaction.date = Date()
+      transaction.date = date
       transaction.isDebit = isDebit
-      transaction.name = name
+      if name == "" {
+         transaction.name = oldTransaction.name
+      } else {
+         transaction.name = name
+      }
       transaction.notes = notes
+   }
+   mutating func prepareTempT(transaction: TransactionEntity) {
+      account?.name = transaction.account
+      amount = String(transaction.amount)
+      budget?.name = transaction.budget
+      date = transaction.date ?? Date()
+      isDebit = transaction.isDebit
+      name = transaction.name
+      notes = transaction.notes
+   }
+   mutating func prepareTempTNew(transaction: TransactionEntity) {
+      account?.name = transaction.account
+      amount = ""
+      budget?.name = transaction.budget
+      date = transaction.date ?? Date()
+      isDebit = transaction.isDebit
+      name = ""
+      notes = transaction.notes
    }
 }
