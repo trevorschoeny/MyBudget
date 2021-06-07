@@ -29,7 +29,7 @@ struct TEditView: View {
    @State var showAlert = false
    
    
-    var body: some View {
+   var body: some View {
       NavigationView {
          VStack {
             Form {
@@ -123,7 +123,7 @@ struct TEditView: View {
             
             // MARK: Cancel Button
             Button(action: {
-//               newT.reset()
+               //               newT.reset()
                self.isPresented.wrappedValue.dismiss()
             }, label: {
                Text("Cancel ")
@@ -133,29 +133,30 @@ struct TEditView: View {
             
             // MARK: Save Button
             Button(action: {
-
+               
                // Show Alert
                if (newTransaction.amount.filter({ $0 == "."}).count) > 1 || newTransaction.account == nil {
                   showAlert = true
                }
                // Submit Transaction
                else {
-                  newTransaction.editTransaction(transaction: inputTransaction, oldTransaction: oldTransaction)
-                  do {
-                      try viewContext.save()
-                  } catch {
-                      let nsError = error as NSError
-                      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                  }
-//                  updateAccountBalance()
+                  newTransaction.updateTransaction(transaction: inputTransaction, oldTransaction: oldTransaction)
+                  newTransaction.account?.balance -= Double(oldTransaction.amount) ?? 0.0
+                  newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
                   if !inputTransaction.isDebit {
 //                     updateBudgetBalance()
                   }
-                  oldTransaction = newTransaction
+                  do {
+                     try viewContext.save()
+                  } catch {
+                     let nsError = error as NSError
+                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                  }
+                  oldTransaction.prepare(transaction: inputTransaction)
                   newTransaction.prepareNew(transaction: inputTransaction)
                }
                self.isPresented.wrappedValue.dismiss()
-
+               
             }, label: {
                ZStack {
                   Rectangle()
@@ -182,7 +183,7 @@ struct TEditView: View {
          }
          .navigationTitle("Edit Transaction")
       }
-    }
+   }
 }
 
 //struct TEdit_Previews: PreviewProvider {

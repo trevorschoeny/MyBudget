@@ -8,21 +8,13 @@
 import Foundation
 
 struct TempTransaction {
-   var amount: String
-   var date: Date
-   var isDebit: Bool
-   var name: String
-   var notes: String
+   var amount = ""
+   var date = Date()
+   var isDebit = false
+   var name = ""
+   var notes = ""
    var account: AccountEntity?
    var budget: BudgetEntity?
-   
-   init() {
-      amount = ""
-      date = Date()
-      isDebit = false
-      name = ""
-      notes = ""
-   }
    
    func populateTransaction(transaction: TransactionEntity) {
       transaction.amount = Double(amount) ?? 0.0
@@ -36,7 +28,7 @@ struct TempTransaction {
       transaction.account = account
       transaction.budget = budget
    }
-   func editTransaction(transaction: TransactionEntity, oldTransaction: TempTransaction) {
+   func updateTransaction(transaction: TransactionEntity, oldTransaction: TempTransaction) {
       if amount == "" {
          transaction.amount = Double(oldTransaction.amount) ?? 0.0
       } else {

@@ -23,7 +23,7 @@ struct AccountView: View {
          .environment(\.editMode, $editMode)
       }
       .popover(isPresented: $showingPopover, content: {
-         DashboardView()
+         ANewView()
       })
    }
    private var addButton: some View {

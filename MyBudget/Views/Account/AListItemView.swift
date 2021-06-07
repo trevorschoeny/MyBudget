@@ -13,7 +13,7 @@ struct AListItemView: View {
    
     var body: some View {
       NavigationLink(
-         destination: DashboardView(),
+         destination: ADetailView(account: a),
          label: {
             HStack {
                VStack(alignment: .leading) {
@@ -30,12 +30,12 @@ struct AListItemView: View {
                }
                Spacer()
                if a.balance >= 0 {
-                  Text("$" + String(a.balance) )
+                  Text(formatterFunction(number: a.balance))
                      .foregroundColor(.green)
                      .padding(.trailing)
                }
                else {
-                  Text("($" + String(abs(a.balance)) + ")")
+                  Text(formatterFunction(number: a.balance))
                      .foregroundColor(.red)
                      .padding(.trailing)
                }

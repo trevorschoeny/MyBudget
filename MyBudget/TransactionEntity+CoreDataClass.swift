@@ -11,5 +11,15 @@ import CoreData
 
 @objc(TransactionEntity)
 public class TransactionEntity: NSManagedObject {
+   
+   public var wDate: Date {
+      date ?? Date()
+   }
+   public var wName: String {
+      name ?? "No Name"
+   }
+   public var wNotes: String {
+      notes ?? "No Notes"
+   }
 
 }

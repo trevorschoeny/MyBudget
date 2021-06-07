@@ -26,7 +26,7 @@ struct TNewView: View {
    @Environment(\.presentationMode) var isPresented
    @State var showAlert = false
    
-    var body: some View {
+   var body: some View {
       NavigationView {
          VStack {
             Form {
@@ -139,15 +139,15 @@ struct TNewView: View {
                // Submit Transaction
                else {
                   newTransaction.populateTransaction(transaction: TransactionEntity(context: viewContext))
-                  do {
-                      try viewContext.save()
-                  } catch {
-                      let nsError = error as NSError
-                      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                  }
-//                  updateAccountBalance()
+                  newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
                   if !newTransaction.isDebit {
 //                     updateBudgetBalance()
+                  }
+                  do {
+                     try viewContext.save()
+                  } catch {
+                     let nsError = error as NSError
+                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                   }
                }
                self.isPresented.wrappedValue.dismiss()
@@ -178,11 +178,11 @@ struct TNewView: View {
          }
          .navigationTitle("Add Transaction")
       }
-    }
+   }
 }
 
 struct TNew_Previews: PreviewProvider {
-    static var previews: some View {
-        TNewView()
-    }
+   static var previews: some View {
+      TNewView()
+   }
 }

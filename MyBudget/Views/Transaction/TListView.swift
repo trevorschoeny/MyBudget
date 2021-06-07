@@ -31,6 +31,7 @@ struct TListView: View {
    private func delete(indexSet: IndexSet) {
       viewContext.perform {
          indexSet.map { transactions[$0] }.forEach(viewContext.delete)
+         transactions[indexSet.first ?? 0].account?.balance -= transactions[indexSet.first ?? 0].amount
          do {
              try viewContext.save()
          } catch {
