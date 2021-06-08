@@ -30,11 +30,19 @@ struct TListView: View {
    }
    private func delete(indexSet: IndexSet) {
       viewContext.perform {
-         indexSet.map { transactions[$0] }.forEach(viewContext.delete)
-         transactions[indexSet.first ?? 0].account?.balance -= transactions[indexSet.first ?? 0].amount
-         if !transactions[indexSet.first ?? 0].isDebit {
-            transactions[indexSet.first ?? 0].budget?.balance -= transactions[indexSet.first ?? 0].amount
+         
+         let transaction = transactions.filter({ t in
+            checkFilter(t: t)
+         })[indexSet.first ?? 0]
+         
+         transaction.account?.balance -= transaction.amount
+         if !transaction.isDebit {
+            transaction.budget?.balance -= transaction.amount
          }
+         
+         indexSet.map { transactions.filter({ t in
+            checkFilter(t: t)
+         })[$0] }.forEach(viewContext.delete)
          do {
              try viewContext.save()
          } catch {

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BDetailView: View {
+   @Environment(\.managedObjectContext) private var viewContext
+   
    @FetchRequest(
       entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.date, ascending: false)], animation: .default)
    private var transactions: FetchedResults<TransactionEntity>
@@ -66,6 +68,9 @@ struct BDetailView: View {
                })) { t in
                   TListItemView(t: t)
                }
+               .onDelete(perform: { indexSet in
+                  delete(indexSet: indexSet)
+               })
             }
          }
          .refreshOnAppear(selection: $selectedItem)
@@ -116,6 +121,29 @@ struct BDetailView: View {
          Text("Edit")
             .foregroundColor(.blue)
       })
+   }
+   private func delete(indexSet: IndexSet) {
+      viewContext.perform {
+         
+         let transaction = transactions.filter({ t in
+            t.budget == budget
+         })[indexSet.first ?? 0]
+         
+         transaction.account?.balance -= transaction.amount
+         if !transaction.isDebit {
+            transaction.budget?.balance -= transaction.amount
+         }
+         
+         indexSet.map { transactions.filter({ t in
+            t.budget == budget
+         })[$0] }.forEach(viewContext.delete)
+         do {
+             try viewContext.save()
+         } catch {
+             let nsError = error as NSError
+             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+         }
+      }
    }
 }
 
