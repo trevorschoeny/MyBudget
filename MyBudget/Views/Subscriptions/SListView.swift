@@ -34,6 +34,13 @@ struct SListView: View {
                Text(formatterFunction(number: totalYearly))
             }
          }
+         if totalMonthly != 0.0 || totalYearly != 0.0 {
+            HStack(spacing: 0) {
+               Text("Annual Total: ")
+                  .foregroundColor(.gray)
+               Text(formatterFunction(number: totalAnnual))
+            }
+         }
          Section {
             ForEach(subscriptions) { s in
                SListItemView(s: s, selectedItem: $selectedItem)
@@ -71,6 +78,12 @@ struct SListView: View {
             total += s.amount
          }
       }
+      return total
+   }
+   private var totalAnnual: Double {
+      var total = 0.0
+      total += (totalMonthly * 12)
+      total += totalYearly
       return total
    }
    private func delete(indexSet: IndexSet) {

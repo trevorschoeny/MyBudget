@@ -34,10 +34,10 @@ struct PersistenceController {
       return result
    }()
    
-   let container: NSPersistentContainer
+   let container: NSPersistentCloudKitContainer
    
    init(inMemory: Bool = false) {
-      container = NSPersistentContainer(name: "MyBudget")
+      container = NSPersistentCloudKitContainer(name: "MyBudget")
       if inMemory {
          container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
       }
@@ -57,5 +57,7 @@ struct PersistenceController {
             fatalError("Unresolved error \(error), \(error.userInfo)")
          }
       })
+      container.viewContext.automaticallyMergesChangesFromParent = true
+      container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
    }
 }
