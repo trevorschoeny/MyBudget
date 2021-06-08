@@ -19,6 +19,7 @@ struct BDetailView: View {
    @State var showingPopover = false
    @State var showingFundPopover = false
    @State var showAlert = false
+   @State private var selectedItem: String?
    
    var body: some View {
       VStack {
@@ -44,7 +45,7 @@ struct BDetailView: View {
             BBalanceView(budget: budget)
             
             // MARK: Past Periods
-            NavigationLink("Past Periods", destination: BPeriodView(budget: budget))
+            NavigationLink("Past Periods", destination: BPeriodView(budget: budget), tag: budget.wName, selection: $selectedItem)
             
             // MARK: Notes
             VStack(alignment: .leading) {
@@ -67,6 +68,7 @@ struct BDetailView: View {
                }
             }
          }
+         .refreshOnAppear(selection: $selectedItem)
          .popover(isPresented: self.$showingFundPopover, content: {
             BNewPeriodView(inputBudget: budget)
          })

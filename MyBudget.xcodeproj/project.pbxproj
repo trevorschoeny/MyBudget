@@ -57,6 +57,7 @@
 		B193AC85266D592600AEA50D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC84266D592600AEA50D /* AccountView.swift */; };
 		B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC86266D59DC00AEA50D /* BudgetView.swift */; };
 		B193AC89266D59E700AEA50D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B193AC88266D59E700AEA50D /* DashboardView.swift */; };
+		B1975F9C266FFE2B00CCDA2A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1975F9B266FFE2B00CCDA2A /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		B193AC84266D592600AEA50D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		B193AC86266D59DC00AEA50D /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 		B193AC88266D59E700AEA50D /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		B1975F9B266FFE2B00CCDA2A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				B1278561266D66FD00A06ADE /* OptionalExtension.swift */,
 				B188029E266DE23B00C64908 /* FormatterExtension.swift */,
 				B11B8649266FC95C001379C6 /* UIExtensions.swift */,
+				B1975F9B266FFE2B00CCDA2A /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B1452A17266EAEBE00918E5F /* TempAccount.swift in Sources */,
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
 				B14F8395266ED12A00A49735 /* BBalanceView.swift in Sources */,
+				B1975F9C266FFE2B00CCDA2A /* ViewExtension.swift in Sources */,
 				B1278566266D6BD200A06ADE /* TNewView.swift in Sources */,
 				B11B8654266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift in Sources */,
 				B1880298266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift in Sources */,

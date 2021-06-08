@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SListItemView: View {
    @ObservedObject var s: SubscriptionEntity
+   @Binding var selectedItem: String?
    
    var body: some View {
-      NavigationLink(destination: SDetailView(subscription: s)) {
+      NavigationLink(destination: SDetailView(subscription: s), tag: s.wName, selection: $selectedItem) {
          HStack {
             VStack(alignment: .leading) {
                Text(s.wName)
@@ -31,8 +32,8 @@ struct SListItemView: View {
    }
 }
 
-struct SListItemView_Previews: PreviewProvider {
-   static var previews: some View {
-      SListItemView(s: SubscriptionEntity())
-   }
-}
+//struct SListItemView_Previews: PreviewProvider {
+//   static var previews: some View {
+//      SListItemView(s: SubscriptionEntity())
+//   }
+//}

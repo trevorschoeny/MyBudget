@@ -16,11 +16,12 @@ struct SListView: View {
    
    @State var showAlert = false
    @State var deleteIndexSet: IndexSet?
+   @State private var selectedItem: String?
    
    var body: some View {
       List {
          ForEach(subscriptions) { s in
-            SListItemView(s: s)
+            SListItemView(s: s, selectedItem: $selectedItem)
          }
          .onDelete(perform: { indexSet in
             showAlert = true
@@ -35,6 +36,7 @@ struct SListView: View {
                   secondaryButton: .cancel())
          })
       }
+      .refreshOnAppear(selection: $selectedItem)
       .listStyle(InsetGroupedListStyle())
    }
    private func delete(indexSet: IndexSet) {

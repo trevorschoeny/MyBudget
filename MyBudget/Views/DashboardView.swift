@@ -38,14 +38,14 @@ struct DashboardView: View {
                         Text("Total Assets: ")
                            .foregroundColor(.gray)
                         Text(formatterFunction(number: totalAssets))
-                           .foregroundColor(.green)
+//                           .foregroundColor(.green)
                      }
                      .font(.footnote)
                      HStack(spacing: 0) {
                         Text("Total Liabilities: ")
                            .foregroundColor(.gray)
                         Text(formatterFunction(number: totalLiabilities))
-                           .foregroundColor(.red)
+//                           .foregroundColor(.red)
                      }
                      .font(.footnote)
                   }
@@ -70,14 +70,14 @@ struct DashboardView: View {
                         Text("Current Assets: ")
                            .foregroundColor(.gray)
                         Text(formatterFunction(number: currentAssets))
-                           .foregroundColor(.green)
+//                           .foregroundColor(.green)
                      }
                      .font(.footnote)
                      HStack(spacing: 0) {
                         Text("Current Liabilities: ")
                            .foregroundColor(.gray)
                         Text(formatterFunction(number: currentLiabilities))
-                           .foregroundColor(.red)
+//                           .foregroundColor(.red)
                      }
                      .font(.footnote)
                   }

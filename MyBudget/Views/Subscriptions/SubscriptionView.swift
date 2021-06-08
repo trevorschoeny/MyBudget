@@ -28,6 +28,7 @@ struct SubscriptionView: View {
             Image(systemName: "plus.circle")
                .resizable()
                .frame(width: 22, height: 22)
+               .offset(x: -8)
          })
       )
    }
