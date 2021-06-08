@@ -31,10 +31,10 @@ struct TempAccount {
       account.userOrder = 1000
    }
    func updateAccount(account: AccountEntity, oldAccount: TempAccount) {
-      if balance != "" {
-         account.balance = Double(balance) ?? 0.0
-      } else {
+      if balance == "" {
          account.balance = Double(oldAccount.balance) ?? 0.0
+      } else {
+         account.balance = Double(balance) ?? 0.0
       }
       if !isDebit {
          account.balance *= -1
@@ -52,7 +52,11 @@ struct TempAccount {
       account.userOrder = userOrder
    }
    mutating func prepare(account: AccountEntity) {
-      balance = String(account.balance)
+      var tempAmount = account.balance
+      if account.balance < 0 {
+         tempAmount *= -1
+      }
+      balance = String(tempAmount)
       date = account.date ?? Date()
       isDebit = account.isDebit
       isCurrent = account.isCurrent

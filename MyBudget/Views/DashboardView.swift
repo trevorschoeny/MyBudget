@@ -16,73 +16,71 @@ struct DashboardView: View {
       entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.userOrder, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
-   @State var balances = Balances()
-   
-    var body: some View {
+   var body: some View {
       NavigationView {
          VStack {
             List {
                HStack {
                   Spacer()
-               VStack(alignment: .center, spacing: 3) {
-                  HStack(spacing: 0) {
-                     Text("Total Balance: ")
-                     if balances.totalBalance >= 0 {
-                        Text("$" + String(balances.totalBalance))
+                  VStack(alignment: .center, spacing: 3) {
+                     HStack(spacing: 0) {
+                        Text("Total Balance: ")
+                        if totalBalance >= 0 {
+                           Text(formatterFunction(number: totalBalance))
+                              .foregroundColor(.green)
+                        } else {
+                           Text(formatterFunction(number: totalBalance))
+                              .foregroundColor(.red)
+                        }
+                     }
+                     .font(.title2)
+                     HStack(spacing: 0) {
+                        Text("Total Assets: ")
+                           .foregroundColor(.gray)
+                        Text(formatterFunction(number: totalAssets))
                            .foregroundColor(.green)
-                     } else {
-                        Text("($" + String(balances.totalBalance) + ")")
+                     }
+                     .font(.footnote)
+                     HStack(spacing: 0) {
+                        Text("Total Liabilities: ")
+                           .foregroundColor(.gray)
+                        Text(formatterFunction(number: totalLiabilities))
                            .foregroundColor(.red)
                      }
+                     .font(.footnote)
                   }
-                  .font(.title2)
-                  HStack(spacing: 0) {
-                     Text("Total Assets: ")
-                        .foregroundColor(.gray)
-                     Text("$" + String(balances.totalAssets))
-                        .foregroundColor(.green)
-                  }
-                  .font(.footnote)
-                  HStack(spacing: 0) {
-                     Text("Total Liabilities: ")
-                        .foregroundColor(.gray)
-                     Text("($" + String(balances.totalLiabilities) + ")")
-                        .foregroundColor(.red)
-                  }
-                  .font(.footnote)
-               }
                   Spacer()
                }
                .padding(.vertical, 5)
                HStack {
                   Spacer()
-               VStack(alignment: .center, spacing: 3) {
-                  HStack(spacing: 0) {
-                     Text("Current Balance: ")
-                     if balances.currentBalance >= 0 {
-                        Text("$" + String(balances.currentBalance))
+                  VStack(alignment: .center, spacing: 3) {
+                     HStack(spacing: 0) {
+                        Text("Current Balance: ")
+                        if currentBalance >= 0 {
+                           Text(formatterFunction(number: currentBalance))
+                              .foregroundColor(.green)
+                        } else {
+                           Text(formatterFunction(number: currentBalance))
+                              .foregroundColor(.red)
+                        }
+                     }
+                     .font(.title2)
+                     HStack(spacing: 0) {
+                        Text("Current Assets: ")
+                           .foregroundColor(.gray)
+                        Text(formatterFunction(number: currentAssets))
                            .foregroundColor(.green)
-                     } else {
-                        Text("($" + String(balances.currentBalance) + ")")
+                     }
+                     .font(.footnote)
+                     HStack(spacing: 0) {
+                        Text("Current Liabilities: ")
+                           .foregroundColor(.gray)
+                        Text(formatterFunction(number: currentLiabilities))
                            .foregroundColor(.red)
                      }
+                     .font(.footnote)
                   }
-                  .font(.title2)
-                  HStack(spacing: 0) {
-                     Text("Current Assets: ")
-                        .foregroundColor(.gray)
-                     Text("$" + String(balances.currentAssets))
-                        .foregroundColor(.green)
-                  }
-                  .font(.footnote)
-                  HStack(spacing: 0) {
-                     Text("Current Liabilities: ")
-                        .foregroundColor(.gray)
-                     Text("($" + String(balances.currentLiabilities) + ")")
-                        .foregroundColor(.red)
-                  }
-                  .font(.footnote)
-               }
                   Spacer()
                }
                .padding(.vertical, 5)
@@ -109,20 +107,70 @@ struct DashboardView: View {
                }
             }
             .navigationTitle("Dashboard")
-//            .navigationBarItems(leading: EditButton(), trailing: addButton)
+            //            .navigationBarItems(leading: EditButton(), trailing: addButton)
          }
-         .onTapGesture(perform: {
-            balances = Balances()
-         })
-         .onAppear(perform: {
-            balances = Balances()
-         })
       }
-    }
+   }
+   private var totalBalance: Double {
+      var total = 0.0
+      for a in accounts {
+         total += a.balance
+      }
+      return total
+   }
+   private var totalAssets: Double {
+      var total = 0.0
+      for a in accounts {
+         if a.balance > 0 {
+            total += a.balance
+         }
+      }
+      return total
+   }
+   private var totalLiabilities: Double {
+      var total = 0.0
+      for a in accounts {
+         if a.balance < 0 {
+            total += a.balance
+         }
+      }
+      return total
+   }
+   private var currentBalance: Double {
+      var total = 0.0
+      for a in accounts {
+         if a.isCurrent {
+            total += a.balance
+         }
+      }
+      return total
+   }
+   private var currentAssets: Double {
+      var total = 0.0
+      for a in accounts {
+         if a.isCurrent {
+            if a.balance > 0 {
+               total += a.balance
+            }
+         }
+      }
+      return total
+   }
+   private var currentLiabilities: Double {
+      var total = 0.0
+      for a in accounts {
+         if a.isCurrent {
+            if a.balance < 0 {
+               total += a.balance
+            }
+         }
+      }
+      return total
+   }
 }
 
 struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
+   static var previews: some View {
+      DashboardView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+   }
 }

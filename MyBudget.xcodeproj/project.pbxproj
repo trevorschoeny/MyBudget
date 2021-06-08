@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1171F09266F28100033A77A /* Balances.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1171F08266F28100033A77A /* Balances.swift */; };
 		B1278556266D5B5C00A06ADE /* TListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278555266D5B5C00A06ADE /* TListItemView.swift */; };
 		B1278558266D5C8700A06ADE /* TListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278557266D5C8700A06ADE /* TListView.swift */; };
 		B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127855A266D5D6200A06ADE /* SearchParameters.swift */; };
@@ -52,7 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B1171F08266F28100033A77A /* Balances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balances.swift; sourceTree = "<group>"; };
 		B1278555266D5B5C00A06ADE /* TListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListItemView.swift; sourceTree = "<group>"; };
 		B1278557266D5C8700A06ADE /* TListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListView.swift; sourceTree = "<group>"; };
 		B127855A266D5D6200A06ADE /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				B1452A16266EAEBE00918E5F /* TempAccount.swift */,
 				B14F838C266EC92D00A49735 /* TempBudget.swift */,
 				B127855A266D5D6200A06ADE /* SearchParameters.swift */,
-				B1171F08266F28100033A77A /* Balances.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 				B1452A12266EAC2700918E5F /* ADetailView.swift in Sources */,
 				B14F8384266EC2B600A49735 /* PeriodEntity+CoreDataClass.swift in Sources */,
 				B14F8387266EC37400A49735 /* BListItemView.swift in Sources */,
-				B1171F09266F28100033A77A /* Balances.swift in Sources */,
 				B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */,
 				B1278560266D642500A06ADE /* SearchBarView.swift in Sources */,
 				B167CC4C266D46C9003AF57D /* MyBudget.xcdatamodeld in Sources */,
