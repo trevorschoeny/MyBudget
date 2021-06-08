@@ -52,7 +52,7 @@ struct BDetailView: View {
             }
          }
          .popover(isPresented: self.$showingFundPopover, content: {
-//            NewPeriodView(inputFunds: budget.balance)
+            BNewPeriodView(inputBudget: budget)
          })
          .listStyle(InsetGroupedListStyle())
          
@@ -79,18 +79,16 @@ struct BDetailView: View {
                      primaryButton: .default(Text("Yes")) {
                         print("HERE")
                         showingFundPopover = true
-                        showingPopover = true
                      },
                      secondaryButton: .cancel())
             })
+            .popover(isPresented: self.$showingPopover, content: {
+               BEditView(oldBudget: $oldBudget, newBudget: $newBudget, inputBudget: $budget)
+            })
          }
-            
       }
       .navigationBarItems(trailing: editButton)
       .navigationTitle("Budget")
-      .popover(isPresented: self.$showingPopover, content: {
-         BEditView(oldBudget: $oldBudget, newBudget: $newBudget, inputBudget: $budget)
-      })
    }
    private var editButton: some View {
       Button(action: {
