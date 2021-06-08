@@ -11,15 +11,11 @@ struct TNewView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
-      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.name, ascending: true)], animation: .default)
-   private var transactions: FetchedResults<TransactionEntity>
-   
-   @FetchRequest(
-      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.name, ascending: true)], animation: .default)
+      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.userOrder, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>
    
    @FetchRequest(
-      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.name, ascending: true)], animation: .default)
+      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.userOrder, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
    @State var newTransaction = TempTransaction()
@@ -95,8 +91,8 @@ struct TNewView: View {
                   }
                }
                
-               // MARK: Remove Budget
-               if newTransaction.budget != nil {
+               // MARK: Clear Budget
+               if !newTransaction.isDebit {
                   HStack {
                      Spacer()
                      Button(action: {
@@ -139,9 +135,16 @@ struct TNewView: View {
                // Submit Transaction
                else {
                   newTransaction.populateTransaction(transaction: TransactionEntity(context: viewContext))
-                  newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
                   if !newTransaction.isDebit {
-//                     updateBudgetBalance()
+                     newTransaction.account?.balance -= Double(newTransaction.amount) ?? 0.0
+                     if !newTransaction.isDebit {
+                        newTransaction.budget?.balance -= Double(newTransaction.amount) ?? 0.0
+                     }
+                  } else {
+                     newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
+                     if !newTransaction.isDebit {
+                        newTransaction.budget?.balance += Double(newTransaction.amount) ?? 0.0
+                     }
                   }
                   do {
                      try viewContext.save()

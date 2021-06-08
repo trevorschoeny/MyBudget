@@ -12,6 +12,13 @@ import CoreData
 @objc(BudgetEntity)
 public class BudgetEntity: NSManagedObject {
    
+   public var periodArray: [PeriodEntity] {
+      let set = period as? Set<PeriodEntity> ?? []
+      return set.sorted {
+         $0.wDate < $1.wDate
+      }
+   }
+   
    public var transactionArray: [TransactionEntity] {
       let set = transaction as? Set<TransactionEntity> ?? []
       return set.sorted {

@@ -32,6 +32,9 @@ struct TListView: View {
       viewContext.perform {
          indexSet.map { transactions[$0] }.forEach(viewContext.delete)
          transactions[indexSet.first ?? 0].account?.balance -= transactions[indexSet.first ?? 0].amount
+         if !transactions[indexSet.first ?? 0].isDebit {
+            transactions[indexSet.first ?? 0].budget?.balance -= transactions[indexSet.first ?? 0].amount
+         }
          do {
              try viewContext.save()
          } catch {

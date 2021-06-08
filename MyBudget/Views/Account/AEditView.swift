@@ -92,7 +92,7 @@ struct AEditView: View {
                // Update Account
                newAccount.updateAccount(account: inputAccount, oldAccount: oldAccount)
 //               updateNames()
-               oldAccount = newAccount
+               oldAccount.prepare(account: inputAccount)
                newAccount.prepareNew(account: inputAccount)
                self.isPresented.wrappedValue.dismiss()
                

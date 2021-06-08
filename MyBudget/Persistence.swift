@@ -17,7 +17,7 @@ struct PersistenceController {
          let newAccount = AccountEntity(context: viewContext)
          newAccount.name = "Account #" + String(i)
          let newBudget = BudgetEntity(context: viewContext)
-         newBudget.name = "Account #" + String(i)
+         newBudget.name = "Budget #" + String(i)
       }
       for i in 0..<10 {
          let newTransaction = TransactionEntity(context: viewContext)

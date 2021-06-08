@@ -1,5 +1,5 @@
 //
-//  ANewView.swift
+//  BNewView.swift
 //  MyBudget
 //
 //  Created by Trevor Schoeny on 6/7/21.
@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct ANewView: View {
+struct BNewView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
-   @State var newAccount = TempAccount()
+   @FetchRequest(
+      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.date, ascending: true)], animation: .default)
+   private var budgets: FetchedResults<BudgetEntity>
+   
+   @State var newBudget = TempBudget()
    @Environment(\.presentationMode) var isPresented
    @State var showAlert = false
+   @State var diffStartBalance = false
+   @State var isExtraFunds = false
    
     var body: some View {
       NavigationView {
@@ -20,43 +26,38 @@ struct ANewView: View {
             
             Form {
                // MARK: Name
-               TextField("Add account name here...", text: $newAccount.name)
+               TextField("Add budget name here...", text: $newBudget.name)
                
                // MARK: onDashboard
-               Toggle("Include on Dashboard", isOn: $newAccount.onDashboard)
+               Toggle("Include on Dashboard", isOn: $newBudget.onDashboard)
                
-               // MARK: isCurrent
-               VStack(alignment: .leading) {
-                  if !newAccount.isCurrent {
-                     Toggle("Long-term", isOn: $newAccount.isCurrent)
-                  }
-                  else {
-                     Toggle("Current", isOn: $newAccount.isCurrent)
-                  }
-               }
-               
-               // MARK: Credit or Debit
-               VStack(alignment: .leading) {
-                  if !newAccount.isDebit {
-                     Toggle("Credit Account", isOn: $newAccount.isDebit)
-                  }
-                  else {
-                     Toggle("Debit Account", isOn: $newAccount.isDebit)
-                  }
-               }
-               
-               // MARK: Amount
+               // MARK: Budget Amount
                HStack {
-                  if !newAccount.isDebit {
-                     Text("$( ")
-                     TextField("Starting Amount", text: $newAccount.balance)
-                        .keyboardType(.decimalPad)
-                     Spacer()
-                     Text(" )")
-                  }
-                  else {
+                  Text("$ ")
+                  TextField("Budget Amount", text: $newBudget.budgetAmount)
+                     .keyboardType(.decimalPad)
+               }
+               
+               // MARK: Different Starting Balance?
+               Toggle("Custom Starting Balance?", isOn: $diffStartBalance)
+               
+               // MARK: Balance
+               if diffStartBalance {
+                  HStack {
                      Text("$ ")
-                     TextField("Starting Amount", text: $newAccount.balance)
+                     TextField("Starting Balance", text: $newBudget.balance)
+                        .keyboardType(.decimalPad)
+                  }
+               }
+               
+               // MARK: Add Extra Funds?
+               Toggle("Add Extra Funds? (For this period only)", isOn: $isExtraFunds)
+               
+               // MARK: Extra Funds
+               if isExtraFunds {
+                  HStack {
+                     Text("$ ")
+                     TextField("Extra Funds", text: $newBudget.extraAmount)
                         .keyboardType(.decimalPad)
                   }
                }
@@ -65,7 +66,7 @@ struct ANewView: View {
                VStack(alignment: .leading, spacing: 0.0) {
                   Text("Notes: ")
                      .padding(.top, 5.0)
-                  TextEditor(text: $newAccount.notes)
+                  TextEditor(text: $newBudget.notes)
                }
             }
             
@@ -80,12 +81,14 @@ struct ANewView: View {
             
             // MARK: Save Button
             Button(action: {
-               if newAccount.balance == ""  || newAccount.name == "" {
+               if newBudget.name == "" ||  newBudget.budgetAmount.filter({ $0 == "."}).count > 1 {
                   showAlert = true
                }
                // Save Account
                else {
-                  newAccount.populateAccount(account: AccountEntity(context: viewContext))
+                  newBudget.diffStartBalance = diffStartBalance
+                  newBudget.isExtraFunds = isExtraFunds
+                  newBudget.populateBudget(budget: BudgetEntity(context: viewContext))
                   do {
                       try viewContext.save()
                   } catch {
@@ -113,13 +116,13 @@ struct ANewView: View {
                Alert(title: Text("Invalid Entry"), message: Text("Please enter a valid input."), dismissButton: .default(Text("Ok")))
             })
          }
-         .navigationTitle("Add Account")
+         .navigationTitle("Add Budget")
       }
     }
 }
 
-struct ANewView_Previews: PreviewProvider {
+struct BNewView_Previews: PreviewProvider {
     static var previews: some View {
-        ANewView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        BNewView()
     }
 }

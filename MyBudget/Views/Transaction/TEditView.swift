@@ -15,11 +15,11 @@ struct TEditView: View {
    private var transactions: FetchedResults<TransactionEntity>
    
    @FetchRequest(
-      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.name, ascending: true)], animation: .default)
+      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.userOrder, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>
    
    @FetchRequest(
-      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.name, ascending: true)], animation: .default)
+      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.userOrder, ascending: true)], animation: .default)
    private var budgets: FetchedResults<BudgetEntity>
    
    @Binding var oldTransaction: TempTransaction
@@ -97,8 +97,8 @@ struct TEditView: View {
                   }
                }
                
-               // MARK: Remove Budget
-               if newTransaction.budget != nil {
+               // MARK: Clear Budget
+               if !newTransaction.isDebit {
                   HStack {
                      Spacer()
                      Button(action: {
@@ -141,11 +141,10 @@ struct TEditView: View {
                // Submit Transaction
                else {
                   newTransaction.updateTransaction(transaction: inputTransaction, oldTransaction: oldTransaction)
-                  newTransaction.account?.balance -= Double(oldTransaction.amount) ?? 0.0
-                  newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
-                  if !inputTransaction.isDebit {
-//                     updateBudgetBalance()
-                  }
+                  updateAccountBalance()
+                  updateBudgetBalance()
+                  print("Account Balance: ")
+                  print(inputTransaction.amount)
                   do {
                      try viewContext.save()
                   } catch {
@@ -182,6 +181,38 @@ struct TEditView: View {
             .padding([.leading, .bottom, .trailing])
          }
          .navigationTitle("Edit Transaction")
+      }
+   }
+   private func updateAccountBalance() {
+      
+      if !oldTransaction.isDebit {
+         oldTransaction.account?.balance += Double(oldTransaction.amount) ?? 0.0
+      } else {
+         oldTransaction.account?.balance -= Double(oldTransaction.amount) ?? 0.0
+      }
+      
+      if newTransaction.amount == "" {
+         newTransaction.amount = oldTransaction.amount
+      }
+      
+      if !newTransaction.isDebit {
+         newTransaction.account?.balance -= Double(newTransaction.amount) ?? 0.0
+      } else {
+         newTransaction.account?.balance += Double(newTransaction.amount) ?? 0.0
+      }
+   }
+   private func updateBudgetBalance() {
+      
+      if !oldTransaction.isDebit {
+         oldTransaction.budget?.balance += Double(oldTransaction.amount) ?? 0.0
+      }
+      
+      if newTransaction.amount == "" {
+         newTransaction.amount = oldTransaction.amount
+      }
+      
+      if !newTransaction.isDebit {
+         newTransaction.budget?.balance -= Double(oldTransaction.amount) ?? 0.0
       }
    }
 }

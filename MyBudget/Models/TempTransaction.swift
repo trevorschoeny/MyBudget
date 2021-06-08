@@ -30,10 +30,13 @@ struct TempTransaction {
    }
    func updateTransaction(transaction: TransactionEntity, oldTransaction: TempTransaction) {
       if amount == "" {
-         transaction.amount = Double(oldTransaction.amount) ?? 0.0
+         transaction.amount = (Double(oldTransaction.amount) ?? 0.0)
+         if !isDebit {
+            transaction.amount *= -1
+         }
       } else {
          transaction.amount = Double(amount) ?? 0.0
-         if !transaction.isDebit {
+         if !isDebit  {
             transaction.amount *= -1
          }
       }
@@ -50,7 +53,7 @@ struct TempTransaction {
    }
    mutating func prepare(transaction: TransactionEntity) {
       var tempAmount = transaction.amount
-      if !transaction.isDebit && transaction.amount != 0.0 {
+      if transaction.amount < 0 {
          tempAmount *= -1
       }
       amount = String(tempAmount)

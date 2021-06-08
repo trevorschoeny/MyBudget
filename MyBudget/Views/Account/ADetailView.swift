@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ADetailView: View {
-   @State var account: AccountEntity
    @State var showingPopover = false
    
+   @State var account: AccountEntity
    @State var oldAccount = TempAccount()
    @State var newAccount = TempAccount()
    
-    var body: some View {
+   var body: some View {
       VStack {
          List {
             
@@ -101,19 +101,16 @@ struct ADetailView: View {
       .popover(isPresented: self.$showingPopover, content: {
          AEditView(oldAccount: $oldAccount, newAccount: $newAccount, inputAccount: $account)
       })
-    }
+   }
    private var editButton: some View {
       Button(action: {
-         prepareTempAccounts(account: account)
+         oldAccount.prepare(account: account)
+         newAccount.prepareNew(account: account)
          showingPopover = true
       }, label: {
          Text("Edit")
             .foregroundColor(.blue)
       })
-   }
-   private func prepareTempAccounts(account: AccountEntity) {
-      oldAccount.prepare(account: account)
-      newAccount.prepareNew(account: account)
    }
 }
 

@@ -19,12 +19,16 @@ struct TempAccount {
    
    func populateAccount(account: AccountEntity) {
       account.balance = Double(balance) ?? 0.0
+      if !isDebit {
+         account.balance *= -1
+      }
+      account.date = Date()
       account.isDebit = isDebit
       account.isCurrent = isCurrent
       account.name = name
       account.notes = notes
       account.onDashboard = onDashboard
-      account.userOrder = userOrder
+      account.userOrder = 1000
    }
    func updateAccount(account: AccountEntity, oldAccount: TempAccount) {
       if balance != "" {
@@ -35,6 +39,7 @@ struct TempAccount {
       if !isDebit {
          account.balance *= -1
       }
+      account.date = date
       account.isDebit = isDebit
       account.isCurrent = isCurrent
       if name != "" {
@@ -48,6 +53,7 @@ struct TempAccount {
    }
    mutating func prepare(account: AccountEntity) {
       balance = String(account.balance)
+      date = account.date ?? Date()
       isDebit = account.isDebit
       isCurrent = account.isCurrent
       name = account.name.bound
@@ -57,6 +63,7 @@ struct TempAccount {
    }
    mutating func prepareNew(account: AccountEntity) {
       balance = ""
+      date = account.date ?? Date()
       isDebit = account.isDebit
       isCurrent = account.isCurrent
       name = ""
