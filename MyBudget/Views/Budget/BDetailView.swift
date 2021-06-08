@@ -50,6 +50,7 @@ struct BDetailView: View {
                      .padding(.bottom, 6.0)
                }
             }
+            NavigationLink("Past Periods", destination: BPeriodView(budget: budget))
          }
          .popover(isPresented: self.$showingFundPopover, content: {
             BNewPeriodView(inputBudget: budget)

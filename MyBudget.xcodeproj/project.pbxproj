@@ -32,6 +32,7 @@
 		B14F8395266ED12A00A49735 /* BBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8394266ED12A00A49735 /* BBalanceView.swift */; };
 		B14F8397266EFF7B00A49735 /* BEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8396266EFF7B00A49735 /* BEditView.swift */; };
 		B14F8399266F083B00A49735 /* BNewPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8398266F083B00A49735 /* BNewPeriodView.swift */; };
+		B14F839D266F15E700A49735 /* BPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F839C266F15E700A49735 /* BPeriodView.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
 		B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC41266D46C7003AF57D /* MyTabView.swift */; };
 		B167CC44266D46C9003AF57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC43266D46C9003AF57D /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		B14F8394266ED12A00A49735 /* BBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBalanceView.swift; sourceTree = "<group>"; };
 		B14F8396266EFF7B00A49735 /* BEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BEditView.swift; sourceTree = "<group>"; };
 		B14F8398266F083B00A49735 /* BNewPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNewPeriodView.swift; sourceTree = "<group>"; };
+		B14F839C266F15E700A49735 /* BPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPeriodView.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBudgetApp.swift; sourceTree = "<group>"; };
 		B167CC41266D46C7003AF57D /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
@@ -124,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				B193AC84266D592600AEA50D /* AccountView.swift */,
-				B1452A0D266E847500918E5F /* AListItemView.swift */,
 				B1452A0F266E857000918E5F /* AListView.swift */,
+				B1452A0D266E847500918E5F /* AListItemView.swift */,
 				B1452A14266EAE1E00918E5F /* ANewView.swift */,
 				B1452A11266EAC2700918E5F /* ADetailView.swift */,
 				B1452A18266EB2A200918E5F /* AEditView.swift */,
@@ -144,6 +146,7 @@
 				B14F8394266ED12A00A49735 /* BBalanceView.swift */,
 				B14F8396266EFF7B00A49735 /* BEditView.swift */,
 				B14F8398266F083B00A49735 /* BNewPeriodView.swift */,
+				B14F839C266F15E700A49735 /* BPeriodView.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				B167CC49266D46C9003AF57D /* Persistence.swift in Sources */,
 				B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */,
 				B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */,
+				B14F839D266F15E700A49735 /* BPeriodView.swift in Sources */,
 				B193AC83266D58AC00AEA50D /* TransactionView.swift in Sources */,
 				B188029F266DE23B00C64908 /* FormatterExtension.swift in Sources */,
 				B188029D266DD37200C64908 /* TempTransaction.swift in Sources */,

@@ -14,27 +14,27 @@ struct BBalanceView: View {
          Spacer()
          VStack {
             if budget.balance < 0 {
-               Text("($" + String(budget.balance) + ")")
+               Text(formatterFunction(number: budget.balance))
                   .foregroundColor(.red)
                   .fontWeight(.semibold)
             }
             else if budget.balance == 0 {
-               Text("$" + String(abs(budget.balance)))
+               Text(formatterFunction(number: budget.balance))
                   .foregroundColor(.red)
                   .fontWeight(.semibold)
             }
             else if budget.balance <= (budget.budgetAmount * 0.25) {
-               Text("$" + String(abs(budget.balance)))
+               Text(formatterFunction(number: budget.balance))
                   .foregroundColor(.orange)
                   .fontWeight(.semibold)
             }
             else if budget.balance <= (budget.budgetAmount * 0.5) {
-               Text("$" + String(abs(budget.balance)))
+               Text(formatterFunction(number: budget.balance))
                   .foregroundColor(.yellow)
                   .fontWeight(.semibold)
             }
             else {
-               Text("$" + String(abs(budget.balance)))
+               Text(formatterFunction(number: budget.balance))
                   .foregroundColor(.green)
                   .fontWeight(.semibold)
             }
@@ -43,7 +43,7 @@ struct BBalanceView: View {
                   .foregroundColor(.gray)
                   .font(.body)
                   .offset(y: 1.3)
-               Text("$" + String(budget.budgetAmount))
+               Text(formatterFunction(number: budget.budgetAmount))
                   .foregroundColor(.gray)
                   .font(.title2)
             }

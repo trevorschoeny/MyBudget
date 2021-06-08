@@ -88,12 +88,15 @@ struct BNewPeriodView: View {
                Button(action: {
                   if inputBudget == nil {
                      for i in 0..<budgets.count {
+                        addNewPeriod(budget: budgets[i])
                         budgets[i].extraAmount = Double(fundArr[i]) ?? 0.0
                         budgets[i].balance = budgets[i].budgetAmount + budgets[i].extraAmount
+                        
                      }
                   } else {
                      for i in 0..<budgets.count {
                         if budgets[i] == inputBudget {
+                           addNewPeriod(budget: budgets[i])
                            budgets[i].extraAmount = Double(fundArr[i]) ?? 0.0
                            budgets[i].balance = budgets[i].budgetAmount + budgets[i].extraAmount
                         } else {
@@ -130,7 +133,6 @@ struct BNewPeriodView: View {
       .onAppear(perform: {
          for b in budgets {
             total += b.balance
-            print(total)
             numBudgets += 1
          }
          if inputBudget != nil {
@@ -138,9 +140,21 @@ struct BNewPeriodView: View {
          }
          fundArr = [String](repeating: "", count: numBudgets)
          fundNumArr = [Double](repeating: 0, count: numBudgets)
-         print(total)
-         print(fundArr.count)
       })
+   }
+   private func addNewPeriod(budget: BudgetEntity) {
+      let newPeriod = PeriodEntity(context: viewContext)
+      newPeriod.budgetAmount = budget.budgetAmount
+      newPeriod.date = Date()
+      newPeriod.endBalance = budget.balance
+      newPeriod.extraAmount = budget.extraAmount
+      newPeriod.budget = budget
+      do {
+         try viewContext.save()
+      } catch {
+         let nsError = error as NSError
+         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+      }
    }
 }
 

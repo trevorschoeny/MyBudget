@@ -15,6 +15,8 @@ struct BListView: View {
    private var budgets: FetchedResults<BudgetEntity>
    
    @Binding var editMode: EditMode
+   @State var showAlert = false
+   @State var deleteIndexSet: IndexSet?
    
     var body: some View {
       List {
@@ -22,10 +24,19 @@ struct BListView: View {
             BListItemView(b: b)
          }
          .onDelete(perform: { indexSet in
-            delete(indexSet: indexSet)
+            deleteIndexSet = indexSet
+            showAlert = true
          })
          .onMove(perform: { indices, newOffset in
             move(source: indices, destination: newOffset)
+         })
+         .alert(isPresented: $showAlert, content: {
+            Alert(title: Text("Are you sure?"),
+                  message: Text("Once deleted, this budget is not recoverable."),
+                  primaryButton: .destructive(Text("Delete")) {
+                     delete(indexSet: deleteIndexSet!)
+                  },
+                  secondaryButton: .cancel())
          })
       }
     }
