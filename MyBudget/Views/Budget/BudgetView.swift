@@ -48,11 +48,11 @@ struct BudgetView: View {
             }
             .navigationTitle("Budgets")
             .navigationBarItems(leading: EditButton(), trailing: addButton)
-            .environment(\.editMode, $editMode)
          }
          .popover(isPresented: $showingPopover, content: {
             BNewView()
          })
+         .environment(\.editMode, $editMode)
       }
       .popover(isPresented: $showingPeriodPopover, content: {
          BNewPeriodView()

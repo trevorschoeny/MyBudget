@@ -127,6 +127,12 @@ struct SDetailView: View {
                            subscription.billDate = Calendar.current.date(byAdding: dateComponent, to: subscription.billDate ?? Date())
                         }
                         addTransaction()
+                        do {
+                           try viewContext.save()
+                        } catch {
+                           let nsError = error as NSError
+                           fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
                      },
                      secondaryButton: .cancel())
             })
@@ -150,13 +156,18 @@ struct SDetailView: View {
    }
    private func addTransaction() {
       let newTransaction = TransactionEntity(context: viewContext)
-      newTransaction.amount = subscription.amount
+      newTransaction.amount = subscription.amount * -1
       newTransaction.date = Date()
       newTransaction.isDebit = false
       newTransaction.name = (subscription.name ?? "") + " Subscription Bill"
 //      newTransaction.notes = "Next billing date: "
       newTransaction.account = subscription.account
       newTransaction.budget = subscription.budget
+      
+      newTransaction.account?.balance += newTransaction.amount
+      newTransaction.account?.balance += newTransaction.amount
+      
+      
    }
 }
 
