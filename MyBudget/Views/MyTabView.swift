@@ -9,12 +9,9 @@ import SwiftUI
 import CoreData
 
 struct MyTabView: View {
-   @Environment(\.managedObjectContext) private var viewContext
-   
    @FetchRequest(
-      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.name, ascending: true)], animation: .default)
-   
-   private var transactions: FetchedResults<TransactionEntity>
+      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.userOrder, ascending: true)], animation: .default)
+   private var accounts: FetchedResults<AccountEntity>
       
       var body: some View {
          TabView {

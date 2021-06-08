@@ -59,6 +59,7 @@ struct BPeriodView: View {
                      .font(.footnote)
                      .foregroundColor(.gray)
                   }
+                  .padding(.vertical, 5)
                }
                .onDelete(perform: { indexSet in
                   showAlert = true
@@ -74,6 +75,7 @@ struct BPeriodView: View {
                })
             }
          }
+         .listStyle(InsetGroupedListStyle())
          .navigationTitle("Past Periods")
       }
    }
