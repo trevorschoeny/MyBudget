@@ -30,6 +30,7 @@
 		B14F838D266EC92D00A49735 /* TempBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F838C266EC92D00A49735 /* TempBudget.swift */; };
 		B14F8393266ECEB800A49735 /* BDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8392266ECEB800A49735 /* BDetailView.swift */; };
 		B14F8395266ED12A00A49735 /* BBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8394266ED12A00A49735 /* BBalanceView.swift */; };
+		B14F8397266EFF7B00A49735 /* BEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8396266EFF7B00A49735 /* BEditView.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
 		B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC41266D46C7003AF57D /* MyTabView.swift */; };
 		B167CC44266D46C9003AF57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC43266D46C9003AF57D /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		B14F838F266ECADB00A49735 /* BudgetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BudgetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B14F8392266ECEB800A49735 /* BDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDetailView.swift; sourceTree = "<group>"; };
 		B14F8394266ED12A00A49735 /* BBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBalanceView.swift; sourceTree = "<group>"; };
+		B14F8396266EFF7B00A49735 /* BEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BEditView.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBudgetApp.swift; sourceTree = "<group>"; };
 		B167CC41266D46C7003AF57D /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				B14F838A266EC89A00A49735 /* BNewView.swift */,
 				B14F8392266ECEB800A49735 /* BDetailView.swift */,
 				B14F8394266ED12A00A49735 /* BBalanceView.swift */,
+				B14F8396266EFF7B00A49735 /* BEditView.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				B14F8389266EC4B800A49735 /* BListView.swift in Sources */,
 				B1278570266D88A900A06ADE /* TEditView.swift in Sources */,
 				B127856E266D855900A06ADE /* TDetailView.swift in Sources */,
+				B14F8397266EFF7B00A49735 /* BEditView.swift in Sources */,
 				B1452A17266EAEBE00918E5F /* TempAccount.swift in Sources */,
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
 				B14F8395266ED12A00A49735 /* BBalanceView.swift in Sources */,

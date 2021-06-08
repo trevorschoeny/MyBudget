@@ -75,7 +75,7 @@ struct AEditView: View {
             
             // MARK: Cancel Button
             Button(action: {
-               newAccount.populateAccount(account: inputAccount)
+               newAccount.prepareNew(account: inputAccount)
                self.isPresented.wrappedValue.dismiss()
             }, label: {
                Text("Cancel ")
@@ -91,7 +91,14 @@ struct AEditView: View {
                
                // Update Account
                newAccount.updateAccount(account: inputAccount, oldAccount: oldAccount)
-//               updateNames()
+               
+               do {
+                  try viewContext.save()
+               } catch {
+                  let nsError = error as NSError
+                  fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+               }
+               
                oldAccount.prepare(account: inputAccount)
                newAccount.prepareNew(account: inputAccount)
                self.isPresented.wrappedValue.dismiss()

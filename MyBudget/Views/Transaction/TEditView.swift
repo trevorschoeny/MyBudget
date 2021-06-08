@@ -123,7 +123,7 @@ struct TEditView: View {
             
             // MARK: Cancel Button
             Button(action: {
-               //               newT.reset()
+               newTransaction.prepareNew(transaction: inputTransaction)
                self.isPresented.wrappedValue.dismiss()
             }, label: {
                Text("Cancel ")
@@ -143,14 +143,14 @@ struct TEditView: View {
                   newTransaction.updateTransaction(transaction: inputTransaction, oldTransaction: oldTransaction)
                   updateAccountBalance()
                   updateBudgetBalance()
-                  print("Account Balance: ")
-                  print(inputTransaction.amount)
+                  
                   do {
                      try viewContext.save()
                   } catch {
                      let nsError = error as NSError
                      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                   }
+                  
                   oldTransaction.prepare(transaction: inputTransaction)
                   newTransaction.prepareNew(transaction: inputTransaction)
                }

@@ -89,7 +89,7 @@ struct BDetailView: View {
       .navigationBarItems(trailing: editButton)
       .navigationTitle("Budget")
       .popover(isPresented: self.$showingPopover, content: {
-//         EditBudgetView(oldBudget: $oldBudget, newBudget: $newBudget, inputBudget: $budget, isExtraFunds: !budget.extraAmount.isEqual(to: 0.0))
+         BEditView(oldBudget: $oldBudget, newBudget: $newBudget, inputBudget: $budget)
       })
    }
    private var editButton: some View {

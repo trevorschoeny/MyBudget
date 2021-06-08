@@ -1,5 +1,5 @@
 //
-//  BNewView.swift
+//  BEditView.swift
 //  MyBudget
 //
 //  Created by Trevor Schoeny on 6/7/21.
@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-struct BNewView: View {
+struct BEditView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
-   @FetchRequest(
-      entity: BudgetEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \BudgetEntity.date, ascending: true)], animation: .default)
-   private var budgets: FetchedResults<BudgetEntity>
+   @Binding var oldBudget: TempBudget
+   @Binding var newBudget: TempBudget
+   @Binding var inputBudget: BudgetEntity
    
-   @State var newBudget = TempBudget()
-   
-   @Environment(\.presentationMode) var isPresented
    @State var showAlert = false
+   @Environment(\.presentationMode) var isPresented
    @State var diffStartBalance = false
    @State var isExtraFunds = false
    
@@ -27,28 +25,26 @@ struct BNewView: View {
             
             Form {
                // MARK: Name
-               TextField("Add budget name here...", text: $newBudget.name)
+               TextField(oldBudget.name, text: $newBudget.name)
                
                // MARK: onDashboard
                Toggle("Include on Dashboard", isOn: $newBudget.onDashboard)
                
+               
                // MARK: Budget Amount
                HStack {
+                  Text("Budget: ")
                   Text("$ ")
-                  TextField("Budget Amount", text: $newBudget.budgetAmount)
+                  TextField(oldBudget.budgetAmount, text: $newBudget.budgetAmount)
                      .keyboardType(.decimalPad)
                }
                
-               // MARK: Different Starting Balance?
-               Toggle("Custom Starting Balance?", isOn: $diffStartBalance)
-               
                // MARK: Balance
-               if diffStartBalance {
-                  HStack {
-                     Text("$ ")
-                     TextField("Starting Balance", text: $newBudget.balance)
-                        .keyboardType(.decimalPad)
-                  }
+               HStack {
+                  Text("Balance: ")
+                  Text("$ ")
+                  TextField(oldBudget.balance, text: $newBudget.balance)
+                     .keyboardType(.decimalPad)
                }
                
                // MARK: Add Extra Funds?
@@ -57,8 +53,8 @@ struct BNewView: View {
                // MARK: Extra Funds
                if isExtraFunds {
                   HStack {
-                     Text("$ ")
-                     TextField("Extra Funds", text: $newBudget.extraAmount)
+                     Text("Extra Funds: $ ")
+                     TextField(oldBudget.extraAmount, text: $newBudget.extraAmount)
                         .keyboardType(.decimalPad)
                   }
                }
@@ -73,6 +69,7 @@ struct BNewView: View {
             
             // MARK: Cancel Button
             Button(action: {
+               newBudget.prepareNew(budget: inputBudget)
                self.isPresented.wrappedValue.dismiss()
             }, label: {
                Text("Cancel ")
@@ -82,20 +79,25 @@ struct BNewView: View {
             
             // MARK: Save Button
             Button(action: {
-               if newBudget.name == "" ||  newBudget.budgetAmount.filter({ $0 == "."}).count > 1 {
+               if newBudget.budgetAmount.filter({ $0 == "."}).count > 1 && newBudget.balance.filter({ $0 == "."}).count > 1{
                   showAlert = true
                }
-               // Save Account
+               // Update Budget
                else {
-                  newBudget.diffStartBalance = diffStartBalance
+                  oldBudget.isExtraFunds = isExtraFunds
                   newBudget.isExtraFunds = isExtraFunds
-                  newBudget.populateBudget(budget: BudgetEntity(context: viewContext))
+                  
+                  newBudget.updateBudget(budget: inputBudget, oldBudget: oldBudget)
+                  
                   do {
-                      try viewContext.save()
+                     try viewContext.save()
                   } catch {
-                      let nsError = error as NSError
-                      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                     let nsError = error as NSError
+                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                   }
+                  
+                  oldBudget.prepare(budget: inputBudget)
+                  newBudget.prepareNew(budget: inputBudget)
                   self.isPresented.wrappedValue.dismiss()
                }
                
@@ -107,7 +109,7 @@ struct BNewView: View {
                      .frame(height: 55)
                      .cornerRadius(10)
                      .padding(.horizontal)
-                  Text("Add")
+                  Text("Update")
                      .font(.headline)
                      .foregroundColor(.white)
                }
@@ -117,13 +119,13 @@ struct BNewView: View {
                Alert(title: Text("Invalid Entry"), message: Text("Please enter a valid input."), dismissButton: .default(Text("Ok")))
             })
          }
-         .navigationTitle("Add Budget")
+         .navigationTitle("Edit Budget")
       }
     }
 }
 
-struct BNewView_Previews: PreviewProvider {
-    static var previews: some View {
-        BNewView()
-    }
-}
+//struct BEditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BEditView()
+//    }
+//}
