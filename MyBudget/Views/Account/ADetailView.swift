@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ADetailView: View {
+   @FetchRequest(
+      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.date, ascending: false)], animation: .default)
+   private var transactions: FetchedResults<TransactionEntity>
+   
    @State var showingPopover = false
    
    @State var account: AccountEntity
@@ -91,6 +95,13 @@ struct ADetailView: View {
                   Text(account.notes ?? "")
                      .multilineTextAlignment(.leading)
                      .padding(.bottom, 6.0)
+               }
+            }
+            Section(header: Text("Transactions")) {
+               ForEach(transactions.filter({ transaction in
+                  transaction.account == account
+               })) { t in
+                  TListItemView(t: t)
                }
             }
          }

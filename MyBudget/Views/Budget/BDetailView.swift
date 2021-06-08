@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct BDetailView: View {
+   @FetchRequest(
+      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.date, ascending: false)], animation: .default)
+   private var transactions: FetchedResults<TransactionEntity>
+   
    @State var budget: BudgetEntity
    @State var oldBudget = TempBudget()
    @State var newBudget = TempBudget()
@@ -39,6 +43,9 @@ struct BDetailView: View {
             // MARK: Balance & Budget Amount
             BBalanceView(budget: budget)
             
+            // MARK: Past Periods
+            NavigationLink("Past Periods", destination: BPeriodView(budget: budget))
+            
             // MARK: Notes
             VStack(alignment: .leading) {
                Text("Notes:")
@@ -50,7 +57,13 @@ struct BDetailView: View {
                      .padding(.bottom, 6.0)
                }
             }
-            NavigationLink("Past Periods", destination: BPeriodView(budget: budget))
+            Section(header: Text("Transactions")) {
+               ForEach(transactions.filter({ transaction in
+                  transaction.budget == budget
+               })) { t in
+                  TListItemView(t: t)
+               }
+            }
          }
          .popover(isPresented: self.$showingFundPopover, content: {
             BNewPeriodView(inputBudget: budget)

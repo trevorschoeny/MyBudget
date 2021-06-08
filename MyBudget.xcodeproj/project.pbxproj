@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11B864A266FC95C001379C6 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8649266FC95C001379C6 /* UIExtensions.swift */; };
 		B1278556266D5B5C00A06ADE /* TListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278555266D5B5C00A06ADE /* TListItemView.swift */; };
 		B1278558266D5C8700A06ADE /* TListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278557266D5C8700A06ADE /* TListView.swift */; };
 		B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127855A266D5D6200A06ADE /* SearchParameters.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B11B8649266FC95C001379C6 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		B1278555266D5B5C00A06ADE /* TListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListItemView.swift; sourceTree = "<group>"; };
 		B1278557266D5C8700A06ADE /* TListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListView.swift; sourceTree = "<group>"; };
 		B127855A266D5D6200A06ADE /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				B127855D266D5E3900A06ADE /* DateExtension.swift */,
 				B1278561266D66FD00A06ADE /* OptionalExtension.swift */,
 				B188029E266DE23B00C64908 /* FormatterExtension.swift */,
+				B11B8649266FC95C001379C6 /* UIExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				B14F8393266ECEB800A49735 /* BDetailView.swift in Sources */,
 				B1452A15266EAE1E00918E5F /* ANewView.swift in Sources */,
 				B167CC49266D46C9003AF57D /* Persistence.swift in Sources */,
+				B11B864A266FC95C001379C6 /* UIExtensions.swift in Sources */,
 				B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */,
 				B1278564266D68BA00A06ADE /* TFilterView.swift in Sources */,
 				B14F839D266F15E700A49735 /* BPeriodView.swift in Sources */,
