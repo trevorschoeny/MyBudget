@@ -36,6 +36,10 @@ struct ADetailView: View {
                         Text("Current")
                            .font(.callout)
                            .foregroundColor(Color.gray)
+                     } else {
+                        Text("Long-Term")
+                           .font(.callout)
+                           .foregroundColor(Color.gray)
                      }
                   }
                } else {
@@ -97,6 +101,8 @@ struct ADetailView: View {
                      .padding(.bottom, 6.0)
                }
             }
+            
+            // MARK: Transactions
             Section(header: Text("Transactions")) {
                ForEach(transactions.filter({ transaction in
                   transaction.account == account

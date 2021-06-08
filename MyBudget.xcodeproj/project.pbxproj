@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B11B864A266FC95C001379C6 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8649266FC95C001379C6 /* UIExtensions.swift */; };
+		B11B864D266FD8B0001379C6 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B864C266FD8B0001379C6 /* SubscriptionView.swift */; };
+		B11B864F266FD8CC001379C6 /* SListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B864E266FD8CC001379C6 /* SListView.swift */; };
+		B11B8651266FD8D6001379C6 /* SListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8650266FD8D6001379C6 /* SListItemView.swift */; };
+		B11B8654266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8652266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift */; };
+		B11B8657266FDE90001379C6 /* SNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8656266FDE90001379C6 /* SNewView.swift */; };
+		B11B8659266FDEA6001379C6 /* TempSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8658266FDEA6001379C6 /* TempSubscription.swift */; };
+		B11B865B266FEBCB001379C6 /* SDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B865A266FEBCB001379C6 /* SDetailView.swift */; };
+		B11B865D266FF12D001379C6 /* SEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B865C266FF12D001379C6 /* SEditView.swift */; };
 		B1278556266D5B5C00A06ADE /* TListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278555266D5B5C00A06ADE /* TListItemView.swift */; };
 		B1278558266D5C8700A06ADE /* TListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278557266D5C8700A06ADE /* TListView.swift */; };
 		B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127855A266D5D6200A06ADE /* SearchParameters.swift */; };
@@ -53,6 +61,14 @@
 
 /* Begin PBXFileReference section */
 		B11B8649266FC95C001379C6 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		B11B864C266FD8B0001379C6 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		B11B864E266FD8CC001379C6 /* SListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SListView.swift; sourceTree = "<group>"; };
+		B11B8650266FD8D6001379C6 /* SListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SListItemView.swift; sourceTree = "<group>"; };
+		B11B8652266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B11B8656266FDE90001379C6 /* SNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNewView.swift; sourceTree = "<group>"; };
+		B11B8658266FDEA6001379C6 /* TempSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSubscription.swift; sourceTree = "<group>"; };
+		B11B865A266FEBCB001379C6 /* SDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDetailView.swift; sourceTree = "<group>"; };
+		B11B865C266FF12D001379C6 /* SEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEditView.swift; sourceTree = "<group>"; };
 		B1278555266D5B5C00A06ADE /* TListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListItemView.swift; sourceTree = "<group>"; };
 		B1278557266D5C8700A06ADE /* TListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListView.swift; sourceTree = "<group>"; };
 		B127855A266D5D6200A06ADE /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -110,6 +126,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B11B864B266FD897001379C6 /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				B11B864C266FD8B0001379C6 /* SubscriptionView.swift */,
+				B11B864E266FD8CC001379C6 /* SListView.swift */,
+				B11B8650266FD8D6001379C6 /* SListItemView.swift */,
+				B11B8656266FDE90001379C6 /* SNewView.swift */,
+				B11B865A266FEBCB001379C6 /* SDetailView.swift */,
+				B11B865C266FF12D001379C6 /* SEditView.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
 		B1278552266D5B0A00A06ADE /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +188,7 @@
 				B188029C266DD37200C64908 /* TempTransaction.swift */,
 				B1452A16266EAEBE00918E5F /* TempAccount.swift */,
 				B14F838C266EC92D00A49735 /* TempBudget.swift */,
+				B11B8658266FDEA6001379C6 /* TempSubscription.swift */,
 				B127855A266D5D6200A06ADE /* SearchParameters.swift */,
 			);
 			path = Models;
@@ -178,6 +208,7 @@
 		B167CC33266D46C7003AF57D = {
 			isa = PBXGroup;
 			children = (
+				B11B8652266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift */,
 				B14F838F266ECADB00A49735 /* BudgetEntity+CoreDataProperties.swift */,
 				B14F8382266EC2B600A49735 /* PeriodEntity+CoreDataClass.swift */,
 				B1880290266DCEF300C64908 /* AccountEntity+CoreDataClass.swift */,
@@ -228,6 +259,7 @@
 				B1278552266D5B0A00A06ADE /* Transaction */,
 				B1278553266D5B1400A06ADE /* Account */,
 				B1278554266D5B1900A06ADE /* Budget */,
+				B11B864B266FD897001379C6 /* Subscriptions */,
 				B127855F266D642500A06ADE /* SearchBarView.swift */,
 			);
 			path = Views;
@@ -313,14 +345,17 @@
 				B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */,
 				B14F8395266ED12A00A49735 /* BBalanceView.swift in Sources */,
 				B1278566266D6BD200A06ADE /* TNewView.swift in Sources */,
+				B11B8654266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift in Sources */,
 				B1880298266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift in Sources */,
 				B188029A266DCEF300C64908 /* TransactionEntity+CoreDataClass.swift in Sources */,
+				B11B865D266FF12D001379C6 /* SEditView.swift in Sources */,
 				B14F838B266EC89A00A49735 /* BNewView.swift in Sources */,
 				B1880296266DCEF300C64908 /* AccountEntity+CoreDataClass.swift in Sources */,
 				B193AC89266D59E700AEA50D /* DashboardView.swift in Sources */,
 				B14F838D266EC92D00A49735 /* TempBudget.swift in Sources */,
 				B14F8399266F083B00A49735 /* BNewPeriodView.swift in Sources */,
 				B1452A19266EB2A200918E5F /* AEditView.swift in Sources */,
+				B11B8657266FDE90001379C6 /* SNewView.swift in Sources */,
 				B14F8393266ECEB800A49735 /* BDetailView.swift in Sources */,
 				B1452A15266EAE1E00918E5F /* ANewView.swift in Sources */,
 				B167CC49266D46C9003AF57D /* Persistence.swift in Sources */,
@@ -334,9 +369,14 @@
 				B1278562266D66FD00A06ADE /* OptionalExtension.swift in Sources */,
 				B1452A10266E857000918E5F /* AListView.swift in Sources */,
 				B1278558266D5C8700A06ADE /* TListView.swift in Sources */,
+				B11B864D266FD8B0001379C6 /* SubscriptionView.swift in Sources */,
 				B1452A12266EAC2700918E5F /* ADetailView.swift in Sources */,
 				B14F8384266EC2B600A49735 /* PeriodEntity+CoreDataClass.swift in Sources */,
+				B11B865B266FEBCB001379C6 /* SDetailView.swift in Sources */,
+				B11B8651266FD8D6001379C6 /* SListItemView.swift in Sources */,
+				B11B8659266FDEA6001379C6 /* TempSubscription.swift in Sources */,
 				B14F8387266EC37400A49735 /* BListItemView.swift in Sources */,
+				B11B864F266FD8CC001379C6 /* SListView.swift in Sources */,
 				B193AC87266D59DC00AEA50D /* BudgetView.swift in Sources */,
 				B1278560266D642500A06ADE /* SearchBarView.swift in Sources */,
 				B167CC4C266D46C9003AF57D /* MyBudget.xcdatamodeld in Sources */,

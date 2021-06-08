@@ -107,9 +107,18 @@ struct DashboardView: View {
                }
             }
             .navigationTitle("Dashboard")
-            //            .navigationBarItems(leading: EditButton(), trailing: addButton)
+            .navigationBarItems(trailing: subButton)
          }
       }
+   }
+   private var subButton: some View {
+      return AnyView(
+         NavigationLink(destination: SubscriptionView(), label: {
+            Image(systemName: "arrow.triangle.2.circlepath.circle")
+               .resizable()
+               .frame(width: 22, height: 22)
+         })
+      )
    }
    private var totalBalance: Double {
       var total = 0.0

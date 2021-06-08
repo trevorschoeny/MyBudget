@@ -92,7 +92,7 @@ struct TNewView: View {
                }
                
                // MARK: Clear Budget
-               if !newTransaction.isDebit {
+               if !newTransaction.isDebit && newTransaction.budget != nil {
                   HStack {
                      Spacer()
                      Button(action: {

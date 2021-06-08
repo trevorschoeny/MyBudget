@@ -57,6 +57,8 @@ struct BDetailView: View {
                      .padding(.bottom, 6.0)
                }
             }
+            
+            // MARK: Transactions
             Section(header: Text("Transactions")) {
                ForEach(transactions.filter({ transaction in
                   transaction.budget == budget
@@ -91,7 +93,6 @@ struct BDetailView: View {
             .alert(isPresented: $showAlert, content: {
                Alert(title: Text("Would you like to start a new period for " + budget.name! + "?"),
                      primaryButton: .default(Text("Yes")) {
-                        print("HERE")
                         showingFundPopover = true
                      },
                      secondaryButton: .cancel())

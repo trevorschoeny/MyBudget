@@ -9,6 +9,7 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="onDashboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="subscription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="account" inverseEntity="SubscriptionEntity"/>
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="account" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="BudgetEntity" representedClassName="BudgetEntity" syncable="YES" codeGenerationType="category">
@@ -21,6 +22,7 @@
         <attribute name="onDashboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="period" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeriodEntity" inverseName="budget" inverseEntity="PeriodEntity"/>
+        <relationship name="subscription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="budget" inverseEntity="SubscriptionEntity"/>
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="budget" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="PeriodEntity" representedClassName="PeriodEntity" syncable="YES" codeGenerationType="category">
@@ -29,6 +31,15 @@
         <attribute name="endBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="extraAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="period" inverseEntity="BudgetEntity"/>
+    </entity>
+    <entity name="SubscriptionEntity" representedClassName="SubscriptionEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="billDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isMonthly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="subscription" inverseEntity="AccountEntity"/>
+        <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="subscription" inverseEntity="BudgetEntity"/>
     </entity>
     <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
         <attribute name="accountxxx" optional="YES" attributeType="String"/>
@@ -42,9 +53,10 @@
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="transaction" inverseEntity="BudgetEntity"/>
     </entity>
     <elements>
-        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="164"/>
-        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="179"/>
-        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="164"/>
+        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="179"/>
+        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="194"/>
         <element name="PeriodEntity" positionX="-45" positionY="72" width="128" height="104"/>
+        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="164"/>
+        <element name="SubscriptionEntity" positionX="-45" positionY="81" width="128" height="134"/>
     </elements>
 </model>

@@ -11,10 +11,6 @@ struct TEditView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
-      entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.name, ascending: true)], animation: .default)
-   private var transactions: FetchedResults<TransactionEntity>
-   
-   @FetchRequest(
       entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.userOrder, ascending: true)], animation: .default)
    private var accounts: FetchedResults<AccountEntity>
    
@@ -98,7 +94,7 @@ struct TEditView: View {
                }
                
                // MARK: Clear Budget
-               if !newTransaction.isDebit {
+               if !newTransaction.isDebit && newTransaction.budget != nil {
                   HStack {
                      Spacer()
                      Button(action: {

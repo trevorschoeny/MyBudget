@@ -31,3 +31,13 @@ extension Date {
         return Calendar.current.date(byAdding: components, to: startOfMonth)!
     }
 }
+
+public func daysUntil(inputDate: Date) -> DateComponents {
+   let userDate = Calendar.current.dateComponents([.day, .month, .year], from: inputDate.startOfDay)
+    
+    let userDateComponents = DateComponents(calendar: Calendar.current, year: userDate.year!, month: userDate.month!, day: userDate.day!).date!
+    
+   let daysUntil = Calendar.current.dateComponents([.day], from: Date().startOfDay, to: userDateComponents)
+    
+    return daysUntil
+}

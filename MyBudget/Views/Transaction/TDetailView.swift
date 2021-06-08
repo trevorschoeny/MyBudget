@@ -75,8 +75,8 @@ struct TDetailView: View {
                Text(transaction.date?.addingTimeInterval(0) ?? Date(), style: .date)
             }
             
+            // MARK: Budget
             if !transaction.isDebit {
-               // MARK: Budget
                HStack {
                   Text("Budget: ")
                      .foregroundColor(Color.gray)
