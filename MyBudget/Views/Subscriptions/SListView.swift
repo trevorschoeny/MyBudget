@@ -20,24 +20,58 @@ struct SListView: View {
    
    var body: some View {
       List {
-         ForEach(subscriptions) { s in
-            SListItemView(s: s, selectedItem: $selectedItem)
+         if totalMonthly != 0.0 {
+            HStack(spacing: 0) {
+               Text("Monthly Subscriptions Total: ")
+                  .foregroundColor(.gray)
+               Text(formatterFunction(number: totalMonthly))
+            }
          }
-         .onDelete(perform: { indexSet in
-            showAlert = true
-            deleteIndexSet = indexSet
-         })
-         .alert(isPresented: $showAlert, content: {
-            Alert(title: Text("Are you sure?"),
-                  message: Text("Once deleted, this subscription is not recoverable."),
-                  primaryButton: .destructive(Text("Delete")) {
-                     delete(indexSet: deleteIndexSet!)
-                  },
-                  secondaryButton: .cancel())
-         })
+         if totalYearly != 0.0 {
+            HStack(spacing: 0) {
+               Text("Yearly Subscriptions Total: ")
+                  .foregroundColor(.gray)
+               Text(formatterFunction(number: totalYearly))
+            }
+         }
+         Section {
+            ForEach(subscriptions) { s in
+               SListItemView(s: s, selectedItem: $selectedItem)
+            }
+            .onDelete(perform: { indexSet in
+               showAlert = true
+               deleteIndexSet = indexSet
+            })
+            .alert(isPresented: $showAlert, content: {
+               Alert(title: Text("Are you sure?"),
+                     message: Text("Once deleted, this subscription is not recoverable."),
+                     primaryButton: .destructive(Text("Delete")) {
+                        delete(indexSet: deleteIndexSet!)
+                     },
+                     secondaryButton: .cancel())
+            })
+         }
       }
       .refreshOnAppear(selection: $selectedItem)
       .listStyle(InsetGroupedListStyle())
+   }
+   private var totalMonthly: Double {
+      var total = 0.0
+      for s in subscriptions {
+         if s.isMonthly {
+            total += s.amount
+         }
+      }
+      return total
+   }
+   private var totalYearly: Double {
+      var total = 0.0
+      for s in subscriptions {
+         if !s.isMonthly {
+            total += s.amount
+         }
+      }
+      return total
    }
    private func delete(indexSet: IndexSet) {
       viewContext.perform {
