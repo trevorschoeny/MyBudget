@@ -122,7 +122,7 @@ struct SEditView: View {
                      .frame(height: 55)
                      .cornerRadius(10)
                      .padding(.horizontal)
-                  Text("Add")
+                  Text("Update")
                      .font(.headline)
                      .foregroundColor(.white)
                }
