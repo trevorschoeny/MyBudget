@@ -21,7 +21,9 @@ struct BListView: View {
     var body: some View {
       List {
          ForEach(budgets) { b in
-            BListItemView(b: b)
+            if !b.isRetired {
+               BListItemView(b: b)
+            }
          }
          .onDelete(perform: { indexSet in
             deleteIndexSet = indexSet
@@ -32,11 +34,13 @@ struct BListView: View {
          })
          .alert(isPresented: $showAlert, content: {
             Alert(title: Text("Are you sure?"),
-                  message: Text("Once deleted, this budget is not recoverable."),
-                  primaryButton: .destructive(Text("Delete")) {
-                     delete(indexSet: deleteIndexSet!)
+                  primaryButton: .default(Text("Retire")) {
+                     retire(indexSet: deleteIndexSet!)
                   },
                   secondaryButton: .cancel())
+         })
+         NavigationLink(destination: BRecoveryView(), label: {
+            Text("Retired Budgets")
          })
       }
     }
@@ -67,9 +71,10 @@ struct BListView: View {
          }
       }
    }
-   private func delete(indexSet: IndexSet) {
+   private func retire(indexSet: IndexSet) {
       viewContext.perform {
-         indexSet.map { budgets[$0] }.forEach(viewContext.delete)
+         budgets[indexSet.first ?? 0].isRetired = true
+         budgets[indexSet.first ?? 0].name?.append(" (Retired)")
          do {
             try viewContext.save()
          } catch {

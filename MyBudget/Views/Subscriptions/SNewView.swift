@@ -59,7 +59,9 @@ struct SNewView: View {
                   Text("Account:")
                   Picker(selection: $newSubscription.account, label: Text("")) {
                      ForEach(accounts) { a in
-                        Text(a.name ?? "no name").tag(a as AccountEntity?)
+                        if !a.isRetired {
+                           Text(a.name ?? "no name").tag(a as AccountEntity?)
+                        }
                      }
                      .lineLimit(1)
                   }
@@ -70,7 +72,9 @@ struct SNewView: View {
                   Text("Budget:")
                   Picker(selection: $newSubscription.budget, label: Text("")) {
                      ForEach(budgets) { b in
-                        Text(b.name ?? "no name").tag(b as BudgetEntity?)
+                        if !b.isRetired {
+                           Text(b.name ?? "no name").tag(b as BudgetEntity?)
+                        }
                      }
                      .lineLimit(1)
                   }

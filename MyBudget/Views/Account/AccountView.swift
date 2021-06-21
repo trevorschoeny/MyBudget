@@ -10,7 +10,12 @@ import SwiftUI
 struct AccountView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
-   @State private var editMode = EditMode.inactive
+   @FetchRequest(
+      entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.userOrder, ascending: true), NSSortDescriptor(keyPath: \AccountEntity.date, ascending: true)], animation: .default)
+   private var accounts: FetchedResults<AccountEntity>
+   
+   @State var editMode = EditMode.inactive
+   @State var showingRecoveryPopover = false
    @State var showingPopover = false
    
    var body: some View {

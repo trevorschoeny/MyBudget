@@ -24,6 +24,11 @@ struct AListItemView: View {
                      } else {
                         Text("Credit Account")
                      }
+                     if a.isRetired {
+                        Text("R")
+                     } else {
+                        Text("A")
+                     }
                   }
                   .foregroundColor(.gray)
                   .font(/*@START_MENU_TOKEN@*/.footnote/*@END_MENU_TOKEN@*/)

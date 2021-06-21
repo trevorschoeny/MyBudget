@@ -88,7 +88,7 @@ struct DashboardView: View {
                // MARK: Accounts
                Section(header: Text("Accounts")) {
                   ForEach (accounts.filter({ a in
-                     a.onDashboard
+                     a.onDashboard && !a.isRetired
                   }), id: \.self) { a in
                      AListItemView(a: a)
                   }
@@ -97,7 +97,7 @@ struct DashboardView: View {
                // MARK: Budgets
                Section(header: Text("Budgets")) {
                   ForEach (budgets.filter({ b in
-                     b.onDashboard
+                     b.onDashboard && !b.isRetired
                   })) { b in
                      BListItemView(b: b)
                   }
@@ -123,14 +123,16 @@ struct DashboardView: View {
    private var totalBalance: Double {
       var total = 0.0
       for a in accounts {
-         total += a.balance
+         if !a.isRetired {
+            total += a.balance
+         }
       }
       return total
    }
    private var totalAssets: Double {
       var total = 0.0
       for a in accounts {
-         if a.balance > 0 {
+         if a.balance > 0 && !a.isRetired {
             total += a.balance
          }
       }
@@ -139,7 +141,7 @@ struct DashboardView: View {
    private var totalLiabilities: Double {
       var total = 0.0
       for a in accounts {
-         if a.balance < 0 {
+         if a.balance < 0 && !a.isRetired {
             total += a.balance
          }
       }
@@ -148,7 +150,7 @@ struct DashboardView: View {
    private var currentBalance: Double {
       var total = 0.0
       for a in accounts {
-         if a.isCurrent {
+         if a.isCurrent && !a.isRetired {
             total += a.balance
          }
       }
@@ -158,7 +160,7 @@ struct DashboardView: View {
       var total = 0.0
       for a in accounts {
          if a.isCurrent {
-            if a.balance > 0 {
+            if a.balance > 0 && !a.isRetired {
                total += a.balance
             }
          }
@@ -169,7 +171,7 @@ struct DashboardView: View {
       var total = 0.0
       for a in accounts {
          if a.isCurrent {
-            if a.balance < 0 {
+            if a.balance < 0 && !a.isRetired {
                total += a.balance
             }
          }

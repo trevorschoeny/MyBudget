@@ -63,7 +63,9 @@ struct SEditView: View {
                   Text("Account:")
                   Picker(selection: $newSubscription.account, label: Text("")) {
                      ForEach(accounts) { a in
-                        Text(a.name ?? "no name").tag(a as AccountEntity?)
+                        if !a.isRetired {
+                           Text(a.name ?? "no name").tag(a as AccountEntity?)
+                        }
                      }
                      .lineLimit(1)
                   }
@@ -74,7 +76,9 @@ struct SEditView: View {
                   Text("Budget:")
                   Picker(selection: $newSubscription.budget, label: Text("")) {
                      ForEach(budgets) { b in
-                        Text(b.name ?? "no name").tag(b as BudgetEntity?)
+                        if !b.isRetired {
+                           Text(b.name ?? "no name").tag(b as BudgetEntity?)
+                        }
                      }
                      .lineLimit(1)
                   }
@@ -102,7 +106,7 @@ struct SEditView: View {
                if  newSubscription.amount.filter({ $0 == "."}).count > 1 || newSubscription.account == nil {
                   showAlert = true
                }
-               // Save Account
+               // Save Subscription
                else {
                   newSubscription.updateSubscription(subscription: inputSubscription, oldSubscription: oldSubscription)
                   do {

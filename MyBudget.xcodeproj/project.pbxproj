@@ -16,6 +16,7 @@
 		B11B8659266FDEA6001379C6 /* TempSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B8658266FDEA6001379C6 /* TempSubscription.swift */; };
 		B11B865B266FEBCB001379C6 /* SDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B865A266FEBCB001379C6 /* SDetailView.swift */; };
 		B11B865D266FF12D001379C6 /* SEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B865C266FF12D001379C6 /* SEditView.swift */; };
+		B11DE8DE267FF8A100EB5B93 /* ARecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DE8DD267FF8A100EB5B93 /* ARecoveryView.swift */; };
 		B1278556266D5B5C00A06ADE /* TListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278555266D5B5C00A06ADE /* TListItemView.swift */; };
 		B1278558266D5C8700A06ADE /* TListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278557266D5C8700A06ADE /* TListView.swift */; };
 		B127855B266D5D6200A06ADE /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127855A266D5D6200A06ADE /* SearchParameters.swift */; };
@@ -42,6 +43,7 @@
 		B14F8397266EFF7B00A49735 /* BEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8396266EFF7B00A49735 /* BEditView.swift */; };
 		B14F8399266F083B00A49735 /* BNewPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F8398266F083B00A49735 /* BNewPeriodView.swift */; };
 		B14F839D266F15E700A49735 /* BPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F839C266F15E700A49735 /* BPeriodView.swift */; };
+		B15AAA432680230B0030AF1F /* BRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AAA422680230B0030AF1F /* BRecoveryView.swift */; };
 		B167CC40266D46C7003AF57D /* MyBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */; };
 		B167CC42266D46C7003AF57D /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B167CC41266D46C7003AF57D /* MyTabView.swift */; };
 		B167CC44266D46C9003AF57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B167CC43266D46C9003AF57D /* Assets.xcassets */; };
@@ -84,6 +86,7 @@
 		B11B8658266FDEA6001379C6 /* TempSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSubscription.swift; sourceTree = "<group>"; };
 		B11B865A266FEBCB001379C6 /* SDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDetailView.swift; sourceTree = "<group>"; };
 		B11B865C266FF12D001379C6 /* SEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEditView.swift; sourceTree = "<group>"; };
+		B11DE8DD267FF8A100EB5B93 /* ARecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARecoveryView.swift; sourceTree = "<group>"; };
 		B1278555266D5B5C00A06ADE /* TListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListItemView.swift; sourceTree = "<group>"; };
 		B1278557266D5C8700A06ADE /* TListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListView.swift; sourceTree = "<group>"; };
 		B127855A266D5D6200A06ADE /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -105,12 +108,12 @@
 		B14F8388266EC4B800A49735 /* BListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BListView.swift; sourceTree = "<group>"; };
 		B14F838A266EC89A00A49735 /* BNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNewView.swift; sourceTree = "<group>"; };
 		B14F838C266EC92D00A49735 /* TempBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempBudget.swift; sourceTree = "<group>"; };
-		B14F838F266ECADB00A49735 /* BudgetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BudgetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B14F8392266ECEB800A49735 /* BDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDetailView.swift; sourceTree = "<group>"; };
 		B14F8394266ED12A00A49735 /* BBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBalanceView.swift; sourceTree = "<group>"; };
 		B14F8396266EFF7B00A49735 /* BEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BEditView.swift; sourceTree = "<group>"; };
 		B14F8398266F083B00A49735 /* BNewPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNewPeriodView.swift; sourceTree = "<group>"; };
 		B14F839C266F15E700A49735 /* BPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPeriodView.swift; sourceTree = "<group>"; };
+		B15AAA422680230B0030AF1F /* BRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRecoveryView.swift; sourceTree = "<group>"; };
 		B167CC3C266D46C7003AF57D /* MyBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B167CC3F266D46C7003AF57D /* MyBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBudgetApp.swift; sourceTree = "<group>"; };
 		B167CC41266D46C7003AF57D /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 				B1452A14266EAE1E00918E5F /* ANewView.swift */,
 				B1452A11266EAC2700918E5F /* ADetailView.swift */,
 				B1452A18266EB2A200918E5F /* AEditView.swift */,
+				B11DE8DD267FF8A100EB5B93 /* ARecoveryView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -199,6 +203,7 @@
 				B14F8396266EFF7B00A49735 /* BEditView.swift */,
 				B14F8398266F083B00A49735 /* BNewPeriodView.swift */,
 				B14F839C266F15E700A49735 /* BPeriodView.swift */,
+				B15AAA422680230B0030AF1F /* BRecoveryView.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -231,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				B11B8652266FD956001379C6 /* SubscriptionEntity+CoreDataClass.swift */,
-				B14F838F266ECADB00A49735 /* BudgetEntity+CoreDataProperties.swift */,
 				B14F8382266EC2B600A49735 /* PeriodEntity+CoreDataClass.swift */,
 				B1880290266DCEF300C64908 /* AccountEntity+CoreDataClass.swift */,
 				B1880292266DCEF300C64908 /* BudgetEntity+CoreDataClass.swift */,
@@ -372,6 +376,7 @@
 				B1452A0E266E847500918E5F /* AListItemView.swift in Sources */,
 				B193AC85266D592600AEA50D /* AccountView.swift in Sources */,
 				B127855E266D5E3900A06ADE /* DateExtension.swift in Sources */,
+				B11DE8DE267FF8A100EB5B93 /* ARecoveryView.swift in Sources */,
 				B14F8389266EC4B800A49735 /* BListView.swift in Sources */,
 				B1278570266D88A900A06ADE /* TEditView.swift in Sources */,
 				B127856E266D855900A06ADE /* TDetailView.swift in Sources */,
@@ -406,6 +411,7 @@
 				B1452A10266E857000918E5F /* AListView.swift in Sources */,
 				B1278558266D5C8700A06ADE /* TListView.swift in Sources */,
 				B11B864D266FD8B0001379C6 /* SubscriptionView.swift in Sources */,
+				B15AAA432680230B0030AF1F /* BRecoveryView.swift in Sources */,
 				B1452A12266EAC2700918E5F /* ADetailView.swift in Sources */,
 				B14F8384266EC2B600A49735 /* PeriodEntity+CoreDataClass.swift in Sources */,
 				B11B865B266FEBCB001379C6 /* SDetailView.swift in Sources */,
@@ -547,6 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyBudget/MyBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MyBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = ZZAT2A2N8K;
 				ENABLE_PREVIEWS = YES;
@@ -570,6 +577,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyBudget/MyBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MyBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = ZZAT2A2N8K;
 				ENABLE_PREVIEWS = YES;

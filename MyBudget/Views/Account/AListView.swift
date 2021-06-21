@@ -16,27 +16,31 @@ struct AListView: View {
    
    @Binding var editMode: EditMode
    @State var showAlert = false
-   @State var deleteIndexSet: IndexSet?
+   @State var retireIndexSet: IndexSet?
    
    var body: some View {
       List {
          ForEach(accounts) { a in
-            AListItemView(a: a)
+            if !a.isRetired {
+               AListItemView(a: a)
+            }
          }
          .onDelete(perform: { indexSet in
             showAlert = true
-            deleteIndexSet = indexSet
+            retireIndexSet = indexSet
          })
          .onMove(perform: { indices, newOffset in
             move(source: indices, destination: newOffset)
          })
          .alert(isPresented: $showAlert, content: {
             Alert(title: Text("Are you sure?"),
-                  message: Text("Once deleted, this account is not recoverable."),
-                  primaryButton: .destructive(Text("Delete")) {
-                     delete(indexSet: deleteIndexSet!)
+                  primaryButton: .default(Text("Retire")) {
+                     retire(indexSet: retireIndexSet!)
                   },
                   secondaryButton: .cancel())
+         })
+         NavigationLink(destination: ARecoveryView(), label: {
+            Text("Retired Accounts")
          })
       }
    }
@@ -45,10 +49,10 @@ struct AListView: View {
          
          // Make an array of items from fetched results
          var revisedAccounts: [ AccountEntity ] = accounts.map{ $0 }
-
+         
          // change the order of the items in the array
          revisedAccounts.move(fromOffsets: source, toOffset: destination )
-
+         
          // update the userOrder attribute in revisedItems to
          // persist the new order. This is done in reverse order
          // to minimize changes to the indices.
@@ -56,8 +60,8 @@ struct AListView: View {
                                      through: 0,
                                      by: -1 )
          {
-             revisedAccounts[ reverseIndex ].userOrder =
-                 Int16( reverseIndex )
+            revisedAccounts[ reverseIndex ].userOrder =
+               Int16( reverseIndex )
          }
          do {
             try viewContext.save()
@@ -68,9 +72,10 @@ struct AListView: View {
       }
    }
    
-   private func delete(indexSet: IndexSet) {
+   private func retire(indexSet: IndexSet) {
       viewContext.perform {
-         indexSet.map { accounts[$0] }.forEach(viewContext.delete)
+         accounts[indexSet.first ?? 0].isRetired = true
+         accounts[indexSet.first ?? 0].name?.append(" (Retired)")
          do {
             try viewContext.save()
          } catch {

@@ -5,6 +5,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isCurrent" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isDebit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isRetired" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="onDashboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -17,6 +18,7 @@
         <attribute name="budgetAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="extraAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="isRetired" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="onDashboard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -53,10 +55,10 @@
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="transaction" inverseEntity="BudgetEntity"/>
     </entity>
     <elements>
-        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="179"/>
-        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="194"/>
+        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="194"/>
+        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="209"/>
         <element name="PeriodEntity" positionX="-45" positionY="72" width="128" height="104"/>
-        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="164"/>
         <element name="SubscriptionEntity" positionX="-45" positionY="81" width="128" height="134"/>
+        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="164"/>
     </elements>
 </model>
