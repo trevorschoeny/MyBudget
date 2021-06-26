@@ -1,13 +1,13 @@
 //
-//  BNewPeriodView.swift
+//  BPeriodView.swift
 //  MyBudget
 //
-//  Created by Trevor Schoeny on 6/7/21.
+//  Created by Trevor Schoeny on 6/21/21.
 //
 
 import SwiftUI
 
-struct BNewPeriodView: View {
+struct BRetireView: View {
    @Environment(\.managedObjectContext) private var viewContext
    
    @FetchRequest(
@@ -15,7 +15,6 @@ struct BNewPeriodView: View {
    private var budgets: FetchedResults<BudgetEntity>
    
    @State var inputBudget: BudgetEntity?
-   @State var budgetsNewPeriod: [Bool]?
    @State var inputFunds: Double = 0
    
    @State var fundArr: [String] = []
@@ -56,24 +55,21 @@ struct BNewPeriodView: View {
                      }
                      Text(" remaining funds.")
                   }
-                  Text("Allocate them for the next period, or continue.")
+                  Text("Allocate them, or continue.")
                      .font(.footnote)
                      .foregroundColor(.gray)
                }
                ForEach (0..<budgets.count) { i in
                   HStack {
-                     if !budgets[i].isRetired {
-                        HStack {
-                           Text(budgets[i].name! + ": ")
-                           Spacer()
-                           Text("$")
-                           TextField("0.00", text: $fundArr[i])
-                              .keyboardType(.decimalPad)
-                              .onChange(of: fundArr[i]) { _ in
-                                 fundNumArr[i] = Double(fundArr[i]) ?? 0.0
-                              }
+                     Text(budgets[i].name! + ": ")
+                     Spacer()
+                     Text("$")
+                     TextField("0.00", text: $fundArr[i])
+                        .keyboardType(.decimalPad)
+                        .onChange(of: fundArr[i]) { _ in
+                           fundNumArr[i] = Double(fundArr[i]) ?? 0.0
                         }
-                     }
+                     
                   }
                }
             }
@@ -101,7 +97,7 @@ struct BNewPeriodView: View {
                         if budgets[i] == inputBudget {
                            addNewPeriod(budget: budgets[i])
                            budgets[i].extraAmount = Double(fundArr[i]) ?? 0.0
-                           budgets[i].balance = budgets[i].budgetAmount + budgets[i].extraAmount
+                           budgets[i].balance = total - fundNumArr.reduce(0, +)
                         } else {
                            budgets[i].extraAmount += Double(fundArr[i]) ?? 0.0
                            budgets[i].balance += Double(fundArr[i]) ?? 0.0
@@ -123,7 +119,7 @@ struct BNewPeriodView: View {
                         .frame(height: 55)
                         .cornerRadius(10)
                         .padding(.horizontal)
-                     Text("Start New Period")
+                     Text("Retire Budget")
                         .font(.headline)
                         .foregroundColor(.white)
                   }
@@ -131,13 +127,11 @@ struct BNewPeriodView: View {
                .padding(.bottom, 10)
             }
          }
-         .navigationTitle("New Period")
+         .navigationTitle("Retire Budget")
       }
       .onAppear(perform: {
          for b in budgets {
-            if !b.isRetired {
-               total += b.balance
-            }
+            total += b.balance
             numBudgets += 1
          }
          if inputBudget != nil {
@@ -163,8 +157,8 @@ struct BNewPeriodView: View {
    }
 }
 
-struct BNewPeriodView_Previews: PreviewProvider {
+struct BRetireView_Previews: PreviewProvider {
    static var previews: some View {
-      BNewPeriodView()
+      BRetireView()
    }
 }

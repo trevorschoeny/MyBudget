@@ -47,8 +47,8 @@ struct BEditView: View {
                      .keyboardType(.decimalPad)
                }
                
-               // MARK: Add Extra Funds?
-               Toggle("Add Extra Funds? (For this period only)", isOn: $isExtraFunds)
+               // MARK: Extra Funds?
+               Toggle("Extra Funds? (For this period only)", isOn: $isExtraFunds)
                
                // MARK: Extra Funds
                if isExtraFunds {
@@ -120,6 +120,11 @@ struct BEditView: View {
             })
          }
          .navigationTitle("Edit Budget")
+         .onAppear {
+            if Double(oldBudget.extraAmount) ?? 0 > 0 {
+               isExtraFunds = true
+            }
+         }
       }
     }
 }

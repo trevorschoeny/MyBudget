@@ -15,11 +15,14 @@ struct BListView: View {
    private var budgets: FetchedResults<BudgetEntity>
    
    @Binding var editMode: EditMode
+   @State var budget: BudgetEntity?
    @State var showAlert = false
    @State var deleteIndexSet: IndexSet?
+   @State var showingFundPopover = false
    
     var body: some View {
       List {
+
          ForEach(budgets) { b in
             if !b.isRetired {
                BListItemView(b: b)
@@ -36,11 +39,16 @@ struct BListView: View {
             Alert(title: Text("Are you sure?"),
                   primaryButton: .default(Text("Retire")) {
                      retire(indexSet: deleteIndexSet!)
+                     budget = budgets[deleteIndexSet?.first ?? 0]
+                     showingFundPopover = true
                   },
                   secondaryButton: .cancel())
          })
          NavigationLink(destination: BRecoveryView(), label: {
             Text("Retired Budgets")
+         })
+         .popover(isPresented: self.$showingFundPopover, content: {
+            BRetireView(inputBudget: budget)
          })
       }
     }
