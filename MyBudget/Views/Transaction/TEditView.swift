@@ -47,7 +47,7 @@ struct TEditView: View {
                      // MARK: Account
                      Picker(selection: $newTransaction.account, label: Text("")) {
                         ForEach(accounts) { a in
-                           if a.isRetired {
+                           if !a.isRetired {
                               Text(a.name ?? "no name").tag(a as AccountEntity?)
                            }
                         }
@@ -88,7 +88,7 @@ struct TEditView: View {
                      Text("Budget:")
                      Picker(selection: $newTransaction.budget, label: Text("")) {
                         ForEach(budgets) { b in
-                           if b.isRetired {
+                           if !b.isRetired {
                               Text(b.name ?? "no name").tag(b as BudgetEntity?)
                            }
                         }
