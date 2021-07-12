@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AccountEntity" representedClassName="AccountEntity" syncable="YES" codeGenerationType="category">
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -12,6 +12,7 @@
         <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="subscription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="account" inverseEntity="SubscriptionEntity"/>
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="account" inverseEntity="TransactionEntity"/>
+        <relationship name="transaction2" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="account2" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="BudgetEntity" representedClassName="BudgetEntity" syncable="YES" codeGenerationType="category">
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -26,6 +27,7 @@
         <relationship name="period" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeriodEntity" inverseName="budget" inverseEntity="PeriodEntity"/>
         <relationship name="subscription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="budget" inverseEntity="SubscriptionEntity"/>
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="budget" inverseEntity="TransactionEntity"/>
+        <relationship name="transaction2" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="budget2" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="PeriodEntity" representedClassName="PeriodEntity" syncable="YES" codeGenerationType="category">
         <attribute name="budgetAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -44,21 +46,20 @@
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="subscription" inverseEntity="BudgetEntity"/>
     </entity>
     <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
-        <attribute name="accountxxx" optional="YES" attributeType="String"/>
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="budgetxxx" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isDebit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="transaction" inverseEntity="AccountEntity"/>
+        <relationship name="account2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="transaction2" inverseEntity="AccountEntity"/>
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="transaction" inverseEntity="BudgetEntity"/>
+        <relationship name="budget2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BudgetEntity" inverseName="transaction2" inverseEntity="BudgetEntity"/>
     </entity>
     <elements>
-        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="194"/>
-        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="209"/>
+        <element name="AccountEntity" positionX="-63" positionY="-9" width="128" height="209"/>
+        <element name="BudgetEntity" positionX="-54" positionY="0" width="128" height="224"/>
         <element name="PeriodEntity" positionX="-45" positionY="72" width="128" height="104"/>
         <element name="SubscriptionEntity" positionX="-45" positionY="81" width="128" height="134"/>
-        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="164"/>
+        <element name="TransactionEntity" positionX="-36" positionY="9" width="128" height="149"/>
     </elements>
 </model>

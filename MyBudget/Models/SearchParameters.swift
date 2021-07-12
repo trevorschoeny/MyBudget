@@ -13,7 +13,6 @@ struct SearchParameters {
    var budget: BudgetEntity?
    var firstDate: Date
    var secondDate: Date
-   var debitToggle: String?
    var dateToggle = false
    var dateRangeToggle = false
    
@@ -26,7 +25,6 @@ struct SearchParameters {
       if text == nil &&
             account == nil &&
             budget == nil &&
-            debitToggle == nil &&
             dateToggle == false &&
             dateRangeToggle == false {
          return false
@@ -40,7 +38,6 @@ struct SearchParameters {
       budget = nil
       firstDate = Date()
       secondDate = Date()
-      debitToggle = nil
       dateToggle = false
       dateRangeToggle = false
    }

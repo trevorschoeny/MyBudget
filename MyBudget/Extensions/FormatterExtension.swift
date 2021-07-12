@@ -11,8 +11,6 @@ extension Formatter {
    static let number: NumberFormatter = {
       let formatter = NumberFormatter()
       formatter.numberStyle = .currency
-      formatter.negativePrefix = "($"
-      formatter.negativeSuffix = ")"
       return formatter
    }()
 }

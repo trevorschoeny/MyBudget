@@ -158,7 +158,6 @@ struct SDetailView: View {
       let newTransaction = TransactionEntity(context: viewContext)
       newTransaction.amount = subscription.amount * -1
       newTransaction.date = Date()
-      newTransaction.isDebit = false
       newTransaction.name = (subscription.name ?? "") + " Subscription Bill"
 //      newTransaction.notes = "Next billing date: "
       newTransaction.account = subscription.account

@@ -107,7 +107,7 @@ struct ADetailView: View {
             // MARK: Transactions
             Section(header: Text("Transactions")) {
                ForEach(transactions.filter({ transaction in
-                  transaction.account == account
+                transaction.account == account || transaction.account2 == account
                })) { t in
                   TListItemView(t: t)
                }
@@ -140,11 +140,11 @@ struct ADetailView: View {
          let transaction = transactions.filter({ t in
             t.account == account
          })[indexSet.first ?? 0]
-         
-         transaction.account?.balance -= transaction.amount
-         if !transaction.isDebit {
-            transaction.budget?.balance -= transaction.amount
-         }
+        
+        transaction.account?.balance += transaction.amount
+        transaction.account2?.balance -= transaction.amount
+        transaction.budget?.balance += transaction.amount
+        transaction.budget2?.balance -= transaction.amount
          
          indexSet.map { transactions.filter({ t in
             t.account == account
